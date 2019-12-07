@@ -1,2 +1,3 @@
-# r7l-overlay
-Gentoo overlay with custom Ebuilds
+# r7l overlay
+
+Gentoo overlay with custom Ebuilds.
