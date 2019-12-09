@@ -2,7 +2,7 @@
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories xmlns="" version="1.0">
 <repo quality="experimental" status="unofficial">
-   <name>r7l overlay</name>
+   <name>r7l-overlay</name>
    <description>Gentoo overlay with custom Ebuilds</description>
    <homepage>https://github.com/r7l/r7l-overlay</homepage>
    <owner>
