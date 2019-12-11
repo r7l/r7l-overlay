@@ -17,6 +17,11 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
+pkg_setup() {
+	enewgroup mailhog
+	enewuser mailhog -1 -1 -1 mailhog
+}
+
 src_install() {
 	newbin ${S}/MailHog mailhog
 }
