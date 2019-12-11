@@ -4,7 +4,7 @@
 EAPI=7
 EGO_PN=github.com/mailhog/MailHog
 
-inherit golang-vcs golang-build
+inherit golang-vcs golang-build user
 
 DESCRIPTION="MailHog is an email testing tool for developers"
 HOMEPAGE="https://github.com/mailhog/MailHog"
