@@ -4,7 +4,7 @@
 EAPI=7
 EGO_PN=github.com/mailhog/MailHog
 
-inherit golang-vcs golang-build user
+inherit user systemd golang-vcs golang-build
 
 DESCRIPTION="MailHog is an email testing tool for developers"
 HOMEPAGE="https://github.com/mailhog/MailHog"
@@ -18,8 +18,8 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 pkg_setup() {
-	enewgroup mailhog
-	enewuser mailhog -1 -1 -1 mailhog
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 "/var/lib/${PN}" ${PN}
 }
 
 src_install() {
