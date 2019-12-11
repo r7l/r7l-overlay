@@ -9,6 +9,8 @@ SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 inherit user golang-vcs-snapshot golang-build
 
+KEYWORDS="amd64 ~arm64"
+
 DESCRIPTION="MailHog is an email testing tool for developers"
 HOMEPAGE="https://github.com/mailhog/MailHog"
 LICENSE="MIT"
