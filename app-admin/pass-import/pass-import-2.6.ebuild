@@ -20,7 +20,7 @@ COMMON_DEPEND="app-shells/bash
 DEPEND=${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	>=app-admin/pass-1.7.0
-	>=dev-python/pyaml-19.4.1"
+	dev-python/pyyaml"
 
 RESTRICT="mirror"
 
