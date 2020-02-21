@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,22 +28,20 @@ IUSE=""
 PYTHON_REQ_USE="sqlite"
 
 DEPEND="
-	dev-python/python-distutils-extra[${PYTHON_USEDEP}]
+	dev-python/python-distutils-extra
 "
 RDEPEND="${DEPEND}
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/pyinotify[${PYTHON_USEDEP}]
-	dev-python/python-levenshtein[${PYTHON_USEDEP}]
-	dev-python/pyxdg[${PYTHON_USEDEP}]
-	dev-python/websocket-client[${PYTHON_USEDEP}]
-	$(python_gen_any_dep 'dev-libs/gobject-introspection[${PYTHON_USEDEP}]')
+	dev-python/dbus-python
+	dev-python/pygobject
+	dev-python/pyinotify
+	dev-python/python-levenshtein
+	dev-python/pyxdg
+	dev-python/websocket-client
+	dev-libs/gobject-introspection
 	dev-libs/libappindicator:3
 	dev-libs/keybinder:3
 	net-libs/webkit-gtk:4/37
 "
-
-BDEPEND="${PYTHON_DEPS}"
 
 src_install(){
 	distutils-r1_src_install
