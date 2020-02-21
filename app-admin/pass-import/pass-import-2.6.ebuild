@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,10 +15,9 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-COMMON_DEPEND="app-shells/bash
+DEPEND=">=app-shells/bash-4.4
 	dev-python/defusedxml[${PYTHON_USEDEP}]"
-DEPEND=${COMMON_DEPEND}
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	>=app-admin/pass-1.7.0
 	dev-python/pyyaml"
 
@@ -27,7 +26,7 @@ RESTRICT="mirror"
 DOCS=( CHANGELOG.md CONTRIBUTING.md README.md )
 
 pkg_setup() {
-        python_setup
+	python_setup
 }
 
 src_prepare() {
