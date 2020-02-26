@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
-# Grabbed from Mrueg overlay
 
 EAPI=6
-PYTHON_COMPAT=(python{2_7,3_6})
+PYTHON_COMPAT=(python{3_5,3_6,3_7,3_8})
 
 inherit distutils-r1
 
