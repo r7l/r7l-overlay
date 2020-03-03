@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -22,7 +21,7 @@ src_unpack() {
 	if [[ -n ${A} ]]; then
 		unpack ${A}
 	fi
-	mv $S/libspotify-deb-12.1.103-0mopidy1/libspotify/amd64/* .
+	mv "${S}/libspotify-deb-12.1.103-0mopidy1/libspotify/amd64/*" .
 }
 
 src_configure() {
