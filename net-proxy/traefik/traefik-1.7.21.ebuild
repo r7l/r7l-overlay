@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ CODENAME="maroilles"
 EGO_PN="github.com/containous/${PN}"
 EGO_VENDOR=( "github.com/containous/go-bindata 532cb0b0736b109aefe85e24e37a2ef35eafc6a8" )
 
-inherit golang-vcs-snapshot systemd user
+inherit golang-vcs-snapshot systemd
 
 DESCRIPTION="A modern HTTP reverse proxy and load balancer made to deploy microservices"
 HOMEPAGE="https://traefik.io"
@@ -33,11 +33,6 @@ pkg_pretend() {
 		(has test ${FEATURES} && has network-sandbox ${FEATURES}) && \
 			die "The test phase requires 'network-sandbox' to be disabled in FEATURES"
 	fi
-}
-
-pkg_setup() {
-	enewgroup traefik
-	enewuser traefik -1 -1 -1 traefik
 }
 
 src_compile() {
