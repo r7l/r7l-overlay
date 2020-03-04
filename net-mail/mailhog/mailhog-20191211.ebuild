@@ -17,7 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND=""
+DEPEND="acct-group/mailhog acct-user/mailhog"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
