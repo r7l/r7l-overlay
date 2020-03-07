@@ -22,6 +22,7 @@ KEYWORDS="~amd64"
 IUSE="debug examples pie"
 
 DEPEND="acct-group/traefik acct-user/traefik"
+RDEPEND="${DEPEND}"
 
 DOCS=( {CHANGELOG,CONTRIBUTING,README}.md )
 QA_PRESTRIPPED="usr/bin/.*"
