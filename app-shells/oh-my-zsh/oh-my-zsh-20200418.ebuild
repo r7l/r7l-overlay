@@ -7,8 +7,9 @@ DESCRIPTION="A ready-to-use zsh configuration with plugins."
 HOMEPAGE="https://ohmyz.sh"
 
 EGO_PN=github.com/robbyrussell/oh-my-zsh
-EGIT_COMMIT="ecf2240b061215224e9502f6c0569dfc66e58ebc"
+EGIT_COMMIT="31eca46ee3b94ca84a038628e0bf6089a7488908"
 SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+RESTRICT="primaryuri"
 
 KEYWORDS="~amd64 ~arm64"
 
