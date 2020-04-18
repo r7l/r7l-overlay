@@ -7,7 +7,7 @@ DESCRIPTION="A Gentoo flavored version of the Agnoster ZSH Theme."
 HOMEPAGE="https://github.com/r7l/agnoster-gentoo-zsh-theme"
 
 EGO_PN=github.com/r7l/agnoster-gentoo-zsh-theme
-EGIT_COMMIT="a2b3700d80181f8431d80087df73481b527bc8c1"
+EGIT_COMMIT="321982e8aeec8c0ddfdd5fb5ac510504d89e747c"
 SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 RESTRICT="primaryuri"
 
