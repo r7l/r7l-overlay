@@ -1,0 +1,16 @@
+# sshguard.service -- sample systemd unit file
+
+[Unit]
+Description=SSHGuard - blocks brute-force login attempts
+After=syslog.target
+After=iptables.target
+After=ip6tables.target
+After=libvirtd.service
+After=firewalld.service
+
+[Service]
+ExecStart=/usr/sbin/sshguard
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
