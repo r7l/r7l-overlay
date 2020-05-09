@@ -21,7 +21,7 @@ src_unpack() {
 	if [[ -n ${A} ]]; then
 		unpack ${A}
 	fi
-	mv "${S}/libspotify-deb-12.1.103-0mopidy1/libspotify/amd64/*" .
+	mv $S/libspotify-deb-12.1.103-0mopidy1/libspotify/amd64/* .
 }
 
 src_configure() {
