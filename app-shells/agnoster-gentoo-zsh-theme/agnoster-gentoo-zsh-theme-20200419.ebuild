@@ -21,11 +21,11 @@ DEPEND=""
 RDEPEND="app-shells/zsh
 	app-shells/oh-my-zsh"
 
-ZSH_DEST="/usr/share/zsh/site-contrib/${PN}"
+ZSH_DEST="/usr/share/zsh/site-contrib/oh-my-zsh/custom/themes/"
 
 S="${WORKDIR}/agnoster-gentoo-zsh-theme-${EGIT_COMMIT}"
 
 src_install() {
 	insinto "${ZSH_DEST}"
-	doins -r agnoster-gentoo.zsh-theme
+	doins agnoster-gentoo.zsh-theme
 }
