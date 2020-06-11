@@ -1,6 +1,6 @@
 #!/sbin/openrc-run
 
-config=/etc/influxdb/influxd.conf
+config=/etc/influxdb/influxdb.conf
 pidfile=/var/run/influxd.pid
 command=/usr/bin/influxd
 command_args="-config ${config}  -pidfile ${pidfile} ${influxd_opts}"

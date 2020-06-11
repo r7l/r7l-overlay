@@ -492,7 +492,7 @@ src_install() {
 	systemd_dounit scripts/influxdb.service
 
 	newconfd "${FILESDIR}"/influxdb.confd influxdb
-	newinitd "${FILESDIR}"/influxdb.rc-r1 influxdb
+	newinitd "${FILESDIR}"/influxdb.rc influxdb
 	insinto /etc/influxdb
 	newins etc/config.sample.toml influxdb.conf
 	keepdir /var/log/influxdb
