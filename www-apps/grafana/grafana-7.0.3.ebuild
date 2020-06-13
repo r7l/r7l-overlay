@@ -8,6 +8,7 @@ S=${WORKDIR}/${PN}-${MY_PV}
 DESCRIPTION="The tool for beautiful monitoring and metric analytics & dashboards"
 HOMEPAGE="https://grafana.com"
 SRC_URI="https://github.com/grafana/grafana/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+RESTRICT="mirror"
 
 inherit go-module systemd
 
