@@ -45,8 +45,7 @@ src_install() {
 	dobin bin/linux-amd64/grafana-cli
 	dobin bin/linux-amd64/grafana-server
 
-	newconfd "${FILESDIR}"/grafana.confd grafana
-	newinitd "${FILESDIR}"/grafana.initd.3 grafana
+	newinitd "${FILESDIR}"/grafana.initd grafana
 	systemd_newunit "${FILESDIR}"/grafana.service grafana.service
 
 	keepdir /var/{lib,log}/grafana

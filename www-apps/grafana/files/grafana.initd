@@ -1,0 +1,36 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+#!/sbin/openrc-run
+
+homepath=/usr/share/grafana
+config=/etc/grafana/grafana.ini
+pidfile=/var/run/grafana/grafana.pid
+command=/usr/bin/grafana-server
+command_args="-config ${config} -homepath ${homepath}"
+command_background=yes
+make_pidfile=yes
+command_user="grafana:grafana"
+retry=SIGTERM/30/SIGKILL/10
+wait=1000
+
+depend() {
+	need localmount
+}
+
+start_pre() {
+
+        # Check if config file exist
+        if [ ! -r ${config} ]; then
+                eerror "config file ${config} doesn't exist"
+            return 1
+        fi
+
+	checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "/var/lib/grafana/dashboards"
+        checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "/var/lib/grafana/plugins"
+        checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "/var/lib/grafana/sessions"
+
+        return 0
+}
+
