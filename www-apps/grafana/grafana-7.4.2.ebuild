@@ -21,8 +21,8 @@ RDEPEND="acct-group/grafana
 	acct-user/grafana
 	!www-apps/grafana-bin"
 DEPEND="${RDEPEND}
-	>=net-libs/nodejs-12.0.0[icu]
-	<=net-libs/nodejs-13.0.0[icu]
+	>=net-libs/nodejs-14.0.0[icu]
+	<=net-libs/nodejs-15.0.0[icu]
 	sys-apps/yarn"
 
 QA_PRESTRIPPED="usr/bin/grafana-*"
@@ -64,4 +64,3 @@ postinst() {
 	elog "wish to use external rotation of logs. In this case, you also need to make"
 	elog "sure the built-in rotation is turned off."
 }
-
