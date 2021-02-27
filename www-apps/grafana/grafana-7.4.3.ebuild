@@ -15,7 +15,7 @@ inherit go-module systemd
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="systemd"
 
 RDEPEND="acct-group/grafana
 	acct-user/grafana
@@ -29,8 +29,8 @@ QA_PRESTRIPPED="usr/bin/grafana-*"
 
 src_compile() {
 	LDFLAGS="" go run build.go build  || die
-	yarn install --pure-lockfile || die
-	./node_modules/.bin/grunt build || die
+	make deps-js || die
+	make build-js || die
 }
 
 src_install() {
@@ -46,7 +46,10 @@ src_install() {
 	dobin bin/linux-amd64/grafana-server
 
 	newinitd "${FILESDIR}"/grafana.initd grafana
-	systemd_newunit "${FILESDIR}"/grafana.service grafana.service
+
+	if ! use systemd; then
+		systemd_newunit "${FILESDIR}"/grafana.service grafana.service
+	fi
 
 	keepdir /var/{lib,log}/grafana
 	keepdir /var/lib/grafana/{dashboards,plugins}
