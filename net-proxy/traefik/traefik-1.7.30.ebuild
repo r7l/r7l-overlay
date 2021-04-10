@@ -6,7 +6,6 @@ EAPI=7
 MY_PV="${PV/_/-}"
 CODENAME="maroilles"
 EGO_PN="github.com/containous/${PN}"
-EGO_VENDOR=( "github.com/containous/go-bindata 532cb0b0736b109aefe85e24e37a2ef35eafc6a8" )
 
 inherit golang-vcs-snapshot systemd
 
@@ -21,7 +20,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug examples pie"
 
-DEPEND="acct-group/traefik acct-user/traefik"
+DEPEND="acct-group/traefik
+        acct-user/traefik
+        =dev-go/go-bindata-1.0.0"
 RDEPEND="${DEPEND}"
 
 DOCS=( {CHANGELOG,CONTRIBUTING,README}.md )
@@ -54,9 +55,6 @@ src_compile() {
 		-gcflags "all=-trimpath=${S}"
 		-ldflags "${myldflags[*]}"
 	)
-
-	# Build go-bindata locally
-	go install ./vendor/github.com/containous/go-bindata/go-bindata || die
 
 	go generate || die
 	go build "${mygoargs[@]}" ./cmd/traefik || die
