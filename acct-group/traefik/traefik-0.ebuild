@@ -5,6 +5,6 @@ EAPI=7
 
 inherit acct-group
 
-DESCRIPTION="Groupd for net-proxy/traefik"
+DESCRIPTION="Group for net-proxy/traefik"
 ACCT_GROUP_ID=500
 SLOT="0"

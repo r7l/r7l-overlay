@@ -5,7 +5,7 @@ EAPI=7
 
 inherit acct-user
 
-DESCRIPTION="Traefik user"
+DESCRIPTION="User for net-proxy/traefik"
 ACCT_USER_ID=500
 ACCT_USER_GROUPS=( traefik )
 acct-user_add_deps
