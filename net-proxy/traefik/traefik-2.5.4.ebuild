@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_PV="${PV/_/-}"
-CODENAME="maroilles"
+CODENAME="cheddar"
 EGO_PN="github.com/traefik/${PN}"
 
 inherit golang-vcs-snapshot systemd
@@ -44,9 +44,9 @@ src_compile() {
 	local PATH="${G}/bin:$PATH"
 	local myldflags=(
 		"$(usex !debug '-s -w' '')"
-		-X "${EGO_PN}/version.Version=${MY_PV}"
-		-X "${EGO_PN}/version.Codename=${CODENAME}"
-		-X "'${EGO_PN}/version.BuildDate=$(date -u '+%Y-%m-%d_%I:%M:%S%p')'"
+		-X "${EGO_PN}/v2/pkg/version.Version=${MY_PV}"
+		-X "${EGO_PN}/v2/pkg/version.Codename=${CODENAME}"
+		-X "'${EGO_PN}/v2/pkg/version.BuildDate=$(date -u '+%Y-%m-%d %I:%M:%S%p')'"
 	)
 	local mygoargs=(
 		-v -work -x
