@@ -17,7 +17,7 @@ SRC_URI="https://github.com/obsidianmd/obsidian-releases/releases/download/v${PV
 
 S="${WORKDIR}"
 
-LICENSE="AGPL-3+"
+LICENSE="Obsidian-EULA"
 SLOT="0"
 KEYWORDS="~amd64"
 
