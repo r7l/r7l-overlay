@@ -10,7 +10,7 @@ inherit desktop unpacker xdg
 
 DEB_VERSION="0.12.15"
 
-DESCRIPTION="https://github.com/obsidianmd/obsidian-releases"
+DESCRIPTION="Obsidian is a powerful knowledge base on top of a local folder of plain text Markdown files."
 HOMEPAGE="https://obsidian.md/"
 SRC_URI="https://github.com/obsidianmd/obsidian-releases/releases/download/v${PV}/${PN}-${PV}.tar.gz
 	https://github.com/obsidianmd/obsidian-releases/releases/download/v${DEB_VERSION}/${PN}_${DEB_VERSION}_amd64.deb"
