@@ -3,12 +3,11 @@
 
 EAPI=7
 
-MY_PV="1.10.21330"
-MY_DNLD_PV="${PV//_beta/B}"
+MY_PV="1.10.22006"
 
 DESCRIPTION="WinFsp · Windows File System Proxy."
 HOMEPAGE="https://github.com/billziss-gh/winfsp"
-SRC_URI="https://github.com/billziss-gh/winfsp/releases/download/v${MY_DNLD_PV}/${PN}-${MY_PV}.msi"
+SRC_URI="https://github.com/billziss-gh/winfsp/releases/download/v${PV}/${PN}-${MY_PV}.msi"
 
 LICENSE="GPL-2"
 SLOT="0"
