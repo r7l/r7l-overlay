@@ -8,7 +8,7 @@ inherit desktop unpacker xdg
 # Obsidian does not always release a .deb version and plain .tar.gz lack of desktop file or icons.
 # We make use of some older deb version for those files.
 
-DEB_VERSION="0.13.30"
+DEB_VERSION="0.13.31"
 
 DESCRIPTION="Obsidian is a powerful knowledge base on top of a local folder of plain text Markdown files."
 HOMEPAGE="https://obsidian.md/"
