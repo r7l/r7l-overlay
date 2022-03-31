@@ -6,7 +6,7 @@ EAPI=7
 DESCRIPTION="A ready-to-use zsh configuration with plugins."
 HOMEPAGE="https://ohmyz.sh"
 
-EGIT_COMMIT="dbadfa0810c0be346b98c02cc802c33fa43bee11"
+EGIT_COMMIT="53863e7b3ff0c2e2816e90dab3d870adebdf49c7"
 SRC_URI="https://github.com/ohmyzsh/ohmyzsh/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 RESTRICT="primaryuri"
 
