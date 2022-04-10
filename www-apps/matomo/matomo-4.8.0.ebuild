@@ -9,7 +9,7 @@ DESCRIPTION="Matomo is the leading Free/Libre open analytics platform."
 HOMEPAGE="https://matomo.org"
 SRC_URI="https://builds.matomo.org/${P}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="GPL-3.0"
 KEYWORDS="~amd64"
 IUSE=""
 
