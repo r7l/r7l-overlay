@@ -33,6 +33,9 @@ src_install() {
 	webapp_serverowned -R "${MY_HTDOCSDIR}/tmp"
 	webapp_serverowned -R "${MY_HTDOCSDIR}/matomo.js"
 
+	# make executable for cli
+	fperms 755 "${MY_HTDOCSDIR}/console"
+
         webapp_src_install
 
 }
