@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
 	dev-python/click
+	dev-python/GitPython
 	dev-python/python-gnupg
 	dev-python/pyperclip
 	"
