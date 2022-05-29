@@ -97,10 +97,12 @@ src_install() {
 }
 
 pkg_postinst() {
+
 	if [[ ! -e "${EROOT}/etc/traefik/traefik.toml" ]]; then
 		elog "No traefik.toml found, copying the example over"
 		cp "${EROOT}"/etc/traefik/traefik.toml{.example,} || die
 	else
 		elog "traefik.toml found, please check example file for possible changes"
 	fi
+
 }
