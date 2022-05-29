@@ -45,7 +45,6 @@ src_compile() {
 
 	go generate || die
 	CGO_ENABLED=0 GOGC=off go build "${MY_GO_ARGS[@]}" .
-	#go build -v -ldflags '-X "github.com/ldez/traefik-certs-dumper/cmd.version=${VERSION}" -X "github.com/ldez/traefik-certs-dumper/cmd.commit=${SHA}" -X "github.com/ldez/traefik-certs-dumper/cmd.date=${BUILD_DATE}"' -o traefik-certs-dumper
 
 }
 
