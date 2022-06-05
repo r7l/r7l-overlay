@@ -8,11 +8,11 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS="README.md"
 
-USE_PHP="php7-2 php7-3 php7-4"
+USE_PHP="php7-4"
 
 inherit php-ext-pecl-r3
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~arm ~arm64"
 
 DESCRIPTION="PHP extension to compress JS files"
 LICENSE="PHP-3"
