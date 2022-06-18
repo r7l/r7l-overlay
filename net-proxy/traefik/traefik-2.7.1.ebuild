@@ -17,7 +17,7 @@ RESTRICT="mirror"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="debug"
+IUSE="debug systemd"
 
 DEPEND="acct-group/traefik
 	acct-user/traefik
