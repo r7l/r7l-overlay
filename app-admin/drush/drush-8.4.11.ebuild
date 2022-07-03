@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="The command line interface for Drupal"
 HOMEPAGE="https://drush.org/"
-SRC_URI="https://github.com/${PN}-ops/${PN}/releases/download/${PV}/${PN}.phar -> ${P}.phar"
+SRC_URI="https://github.com/drush-ops/drush/releases/download/${PV}/${PN}.phar -> ${P}.phar"
 
 LICENSE="MIT"
 SLOT="0"
