@@ -6,8 +6,8 @@ EAPI=7
 MY_PV="1.10.22006"
 
 DESCRIPTION="WinFsp · Windows File System Proxy."
-HOMEPAGE="https://github.com/billziss-gh/winfsp"
-SRC_URI="https://github.com/billziss-gh/winfsp/releases/download/v${PV}/${PN}-${MY_PV}.msi"
+HOMEPAGE="https://github.com/winfsp/winfsp"
+SRC_URI="https://github.com/winfsp/winfsp/releases/download/v${PV}/${PN}-${MY_PV}.msi"
 
 LICENSE="GPL-2"
 SLOT="0"
