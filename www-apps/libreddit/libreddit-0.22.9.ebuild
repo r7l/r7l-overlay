@@ -181,3 +181,9 @@ KEYWORDS="~amd64"
 DEPEND=""
 RDEPEND="acct-user/libreddit
 	acct-group/libreddit"
+
+src_install(){
+	cargo_src_install
+	newinitd "${FILESDIR}"/libreddit.initd libreddit
+	doconfd "${FILESDIR}"/libreddit
+}

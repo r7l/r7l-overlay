@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="libreddit daemon"
+description="Private front-end for Reddit"
+command=/usr/bin/libreddit
+pidfile="/var/run/${RC_SVCNAME}.pid"
+command_user="libreddit"
+command_background=true
