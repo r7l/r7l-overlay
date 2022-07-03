@@ -14,7 +14,7 @@ EGIT_COMMIT="3df7d30cd5b551b23e41781313cef389239e27bc"
 EGIT_REPO_URI="https://github.com/gnif/LookingGlass"
 
 DESCRIPTION="A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough"
-HOMEPAGE="https://looking-glass.io https://github.com/gnif/LookingGlass/"
+HOMEPAGE="https://looking-glass.io"
 SRC_URI="https://looking-glass.io/artifact/${MY_PV}/source -> ${PN}-${MY_PV}.tar.gz
 	host? ( https://looking-glass.io/artifact/${MY_PV}/host -> ${PN}-${MY_PV}-host.zip )"
 
