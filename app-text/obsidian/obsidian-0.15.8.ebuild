@@ -5,15 +5,10 @@ EAPI=7
 
 inherit desktop unpacker xdg
 
-# Obsidian does not always release a .deb version and plain .tar.gz lack of desktop file or icons.
-# We make use of some older deb version for those files.
-
-DEB_VERSION="0.14.15"
-
 DESCRIPTION="Obsidian is a powerful knowledge base on top of a local folder of plain text Markdown files."
 HOMEPAGE="https://obsidian.md/"
 SRC_URI="https://github.com/obsidianmd/obsidian-releases/releases/download/v${PV}/${PN}-${PV}.tar.gz
-	https://github.com/obsidianmd/obsidian-releases/releases/download/v${DEB_VERSION}/${PN}_${DEB_VERSION}_amd64.deb"
+	https://github.com/obsidianmd/obsidian-releases/releases/download/v${PV}/${PN}_${PV}_amd64.deb"
 
 S="${WORKDIR}"
 
