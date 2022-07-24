@@ -2,10 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 MY_PV=${PV/_beta/-beta}
 S=${WORKDIR}/${PN}-${MY_PV}
 
-DESCRIPTION="The tool for beautiful monitoring and metric analytics & dashboards"
+DESCRIPTION="The open-source platform for monitoring and observability"
 HOMEPAGE="https://grafana.com"
 SRC_URI="https://github.com/grafana/grafana/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror"
@@ -21,8 +22,7 @@ RDEPEND="acct-group/grafana
 	acct-user/grafana
 	!www-apps/grafana-bin"
 DEPEND="${RDEPEND}
-	>=net-libs/nodejs-16.0.0[icu]
-	<=net-libs/nodejs-17.0.0[icu]
+	=net-libs/nodejs-16[icu]
 	sys-apps/yarn"
 
 QA_PRESTRIPPED="usr/bin/grafana-*"
