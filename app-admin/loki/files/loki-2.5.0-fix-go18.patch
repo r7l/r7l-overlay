@@ -1,0 +1,558 @@
+diff --git a/go.mod b/go.mod
+index 4dcca277a9..7c55aa74f1 100644
+--- a/go.mod
++++ b/go.mod
+@@ -106,7 +106,7 @@ require (
+ 	gopkg.in/fsnotify.v1 v1.4.7
+ 	gopkg.in/yaml.v2 v2.4.0
+ 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+-	inet.af/netaddr v0.0.0-20210707202901-70468d781e6c
++	inet.af/netaddr v0.0.0-20211027220019-c74959edd3b6
+ 	k8s.io/klog v1.0.0
+ )
+ 
+@@ -256,8 +256,8 @@ require (
+ 	go.opentelemetry.io/otel/trace v1.4.1 // indirect
+ 	go.uber.org/multierr v1.7.0 // indirect
+ 	go.uber.org/zap v1.19.1 // indirect
+-	go4.org/intern v0.0.0-20210108033219-3eb7198706b2 // indirect
+-	go4.org/unsafe/assume-no-moving-gc v0.0.0-20201222180813-1025295fd063 // indirect
++	go4.org/intern v0.0.0-20211027215823-ae77deb06f29 // indirect
++	go4.org/unsafe/assume-no-moving-gc v0.0.0-20211027215541-db492cf91b37 // indirect
+ 	golang.org/x/mod v0.5.1 // indirect
+ 	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8 // indirect
+ 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
+diff --git a/go.sum b/go.sum
+index 75f66499f5..74527af9d9 100644
+--- a/go.sum
++++ b/go.sum
+@@ -2024,11 +2024,10 @@ go.uber.org/zap v1.14.1/go.mod h1:Mb2vm2krFEG5DV0W9qcHBYFtp/Wku1cvYaqPsS/WYfc=
+ go.uber.org/zap v1.17.0/go.mod h1:MXVU+bhUf/A7Xi2HNOnopQOrmycQ5Ih87HtOu4q5SSo=
+ go.uber.org/zap v1.19.1 h1:ue41HOKd1vGURxrmeKIgELGb3jPW9DMUDGtsinblHwI=
+ go.uber.org/zap v1.19.1/go.mod h1:j3DNczoxDZroyBnOT1L/Q79cfUMGZxlv/9dzN7SM1rI=
+-go4.org/intern v0.0.0-20210108033219-3eb7198706b2 h1:VFTf+jjIgsldaz/Mr00VaCSswHJrI2hIjQygE/W4IMg=
+-go4.org/intern v0.0.0-20210108033219-3eb7198706b2/go.mod h1:vLqJ+12kCw61iCWsPto0EOHhBS+o4rO5VIucbc9g2Cc=
+-go4.org/unsafe/assume-no-moving-gc v0.0.0-20201222175341-b30ae309168e/go.mod h1:FftLjUGFEDu5k8lt0ddY+HcrH/qU/0qk+H8j9/nTl3E=
+-go4.org/unsafe/assume-no-moving-gc v0.0.0-20201222180813-1025295fd063 h1:1tk03FUNpulq2cuWpXZWj649rwJpk0d20rxWiopKRmc=
+-go4.org/unsafe/assume-no-moving-gc v0.0.0-20201222180813-1025295fd063/go.mod h1:FftLjUGFEDu5k8lt0ddY+HcrH/qU/0qk+H8j9/nTl3E=
++go4.org/intern v0.0.0-20211027215823-ae77deb06f29 h1:UXLjNohABv4S58tHmeuIZDO6e3mHpW2Dx33gaNt03LE=
++go4.org/intern v0.0.0-20211027215823-ae77deb06f29/go.mod h1:cS2ma+47FKrLPdXFpr7CuxiTW3eyJbWew4qx0qtQWDA=
++go4.org/unsafe/assume-no-moving-gc v0.0.0-20211027215541-db492cf91b37 h1:Tx9kY6yUkLge/pFG7IEMwDZy6CS2ajFc9TvQdPCW0uA=
++go4.org/unsafe/assume-no-moving-gc v0.0.0-20211027215541-db492cf91b37/go.mod h1:FftLjUGFEDu5k8lt0ddY+HcrH/qU/0qk+H8j9/nTl3E=
+ golang.org/x/crypto v0.0.0-20171113213409-9f005a07e0d3/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
+ golang.org/x/crypto v0.0.0-20180505025534-4ec37c66abab/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
+ golang.org/x/crypto v0.0.0-20180904163835-0709b304e793/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
+@@ -2770,8 +2769,8 @@ honnef.co/go/tools v0.0.1-2019.2.3/go.mod h1:a3bituU0lyd329TUQxRnasdCoJDkEUEAqEt
+ honnef.co/go/tools v0.0.1-2020.1.3/go.mod h1:X/FiERA/W4tHapMX5mGpAtMSVEeEUOyHaw9vFzvIQ3k=
+ honnef.co/go/tools v0.0.1-2020.1.4/go.mod h1:X/FiERA/W4tHapMX5mGpAtMSVEeEUOyHaw9vFzvIQ3k=
+ howett.net/plist v0.0.0-20181124034731-591f970eefbb/go.mod h1:vMygbs4qMhSZSc4lCUl2OEE+rDiIIJAIdR4m7MiMcm0=
+-inet.af/netaddr v0.0.0-20210707202901-70468d781e6c h1:ZNUX2CiFwNbN1VFaD4MQFmC8o5Rxc7BQW1P1K8kMpbE=
+-inet.af/netaddr v0.0.0-20210707202901-70468d781e6c/go.mod h1:z0nx+Dh+7N7CC8V5ayHtHGpZpxLQZZxkIaaz6HN65Ls=
++inet.af/netaddr v0.0.0-20211027220019-c74959edd3b6 h1:acCzuUSQ79tGsM/O50VRFySfMm19IoMKL+sZztZkCxw=
++inet.af/netaddr v0.0.0-20211027220019-c74959edd3b6/go.mod h1:y3MGhcFMlh0KZPMuXXow8mpjxxAk3yoDNsp4cQz54i8=
+ k8s.io/api v0.21.0 h1:gu5iGF4V6tfVCQ/R+8Hc0h7H1JuEhzyEi9S4R5LM8+Y=
+ k8s.io/api v0.21.0/go.mod h1:+YbrhBBGgsxbF6o6Kj4KJPJnBmAKuXDeS3E18bgHNVU=
+ k8s.io/apimachinery v0.21.0 h1:3Fx+41if+IRavNcKOz09FwEXDBG6ORh6iMsTSelhkMA=
+diff --git a/vendor/go4.org/unsafe/assume-no-moving-gc/untested.go b/vendor/go4.org/unsafe/assume-no-moving-gc/untested.go
+index b7df7df71c..01377f77ea 100644
+--- a/vendor/go4.org/unsafe/assume-no-moving-gc/untested.go
++++ b/vendor/go4.org/unsafe/assume-no-moving-gc/untested.go
+@@ -2,7 +2,8 @@
+ // Use of this source code is governed by a BSD-style
+ // license that can be found in the LICENSE file.
+ 
+-// +build go1.18
++//go:build go1.19
++// +build go1.19
+ 
+ package assume_no_moving_gc
+ 
+diff --git a/vendor/inet.af/netaddr/fuzz.go b/vendor/inet.af/netaddr/fuzz.go
+index 06d90a53b9..cf1836dc06 100644
+--- a/vendor/inet.af/netaddr/fuzz.go
++++ b/vendor/inet.af/netaddr/fuzz.go
+@@ -2,6 +2,7 @@
+ // Use of this source code is governed by a BSD-style
+ // license that can be found in the LICENSE file.
+ 
++//go:build gofuzz
+ // +build gofuzz
+ 
+ package netaddr
+@@ -129,13 +130,18 @@ func checkBinaryMarshaller(x encoding.BinaryMarshaler) {
+ 	}
+ }
+ 
+-type appendMarshaller interface {
++// fuzzAppendMarshaler is identical to appendMarshaler, defined in netaddr_test.go.
++// We have two because the two go-fuzz implementations differ
++// in whether they include _test.go files when typechecking.
++// We need this fuzz file to compile with and without netaddr_test.go,
++// which means defining the interface twice.
++type fuzzAppendMarshaler interface {
+ 	encoding.TextMarshaler
+ 	AppendTo([]byte) []byte
+ }
+ 
+ // checkTextMarshalMatchesAppendTo checks that x's MarshalText matches x's AppendTo.
+-func checkTextMarshalMatchesAppendTo(x appendMarshaller) {
++func checkTextMarshalMatchesAppendTo(x fuzzAppendMarshaler) {
+ 	buf, err := x.MarshalText()
+ 	if err != nil {
+ 		panic(err)
+@@ -154,8 +160,8 @@ func parseIPPort(s string) (interface{}, error)   { return ParseIPPort(s) }
+ func parseIPPrefix(s string) (interface{}, error) { return ParseIPPrefix(s) }
+ 
+ func checkStringParseRoundTrip(x fmt.Stringer, parse func(string) (interface{}, error)) {
+-	v, vok := x.(interface{ Valid() bool })
+-	if vok && !v.Valid() {
++	v, vok := x.(interface{ IsValid() bool })
++	if vok && !v.IsValid() {
+ 		// Ignore invalid values.
+ 		return
+ 	}
+@@ -163,7 +169,7 @@ func checkStringParseRoundTrip(x fmt.Stringer, parse func(string) (interface{},
+ 	// The exception is if they have a Valid method and that Valid method
+ 	// explicitly says that the zero value is valid.
+ 	z, zok := x.(interface{ IsZero() bool })
+-	if zok && z.IsZero() && !(vok && v.Valid()) {
++	if zok && z.IsZero() && !(vok && v.IsValid()) {
+ 		return
+ 	}
+ 	s := x.String()
+@@ -189,7 +195,7 @@ func checkEncoding(x interface{}) {
+ 	if bm, ok := x.(encoding.BinaryMarshaler); ok {
+ 		checkBinaryMarshaller(bm)
+ 	}
+-	if am, ok := x.(appendMarshaller); ok {
++	if am, ok := x.(fuzzAppendMarshaler); ok {
+ 		checkTextMarshalMatchesAppendTo(am)
+ 	}
+ }
+diff --git a/vendor/inet.af/netaddr/ipset.go b/vendor/inet.af/netaddr/ipset.go
+index f6e258cc2f..b448e25f9a 100644
+--- a/vendor/inet.af/netaddr/ipset.go
++++ b/vendor/inet.af/netaddr/ipset.go
+@@ -5,8 +5,8 @@
+ package netaddr
+ 
+ import (
+-	"errors"
+ 	"fmt"
++	"runtime"
+ 	"sort"
+ 	"strings"
+ )
+@@ -64,7 +64,7 @@ func (s *IPSetBuilder) normalize() {
+ 		}
+ 
+ 		switch {
+-		case !rout.Valid() || !rin.Valid():
++		case !rout.IsValid() || !rin.IsValid():
+ 			// mergeIPRanges should have prevented invalid ranges from
+ 			// sneaking in.
+ 			panic("invalid IPRanges during Ranges merge")
+@@ -168,9 +168,22 @@ func (s *IPSetBuilder) Clone() *IPSetBuilder {
+ 	}
+ }
+ 
++func (s *IPSetBuilder) addError(msg string, args ...interface{}) {
++	se := new(stacktraceErr)
++	// Skip three frames: runtime.Callers, addError, and the IPSetBuilder
++	// method that called addError (such as IPSetBuilder.Add).
++	// The resulting stack trace ends at the line in the user's
++	// code where they called into netaddr.
++	n := runtime.Callers(3, se.pcs[:])
++	se.at = se.pcs[:n]
++	se.err = fmt.Errorf(msg, args...)
++	s.errs = append(s.errs, se)
++}
++
+ // Add adds ip to s.
+ func (s *IPSetBuilder) Add(ip IP) {
+ 	if ip.IsZero() {
++		s.addError("Add(IP{})")
+ 		return
+ 	}
+ 	s.AddRange(IPRangeFrom(ip, ip))
+@@ -178,18 +191,18 @@ func (s *IPSetBuilder) Add(ip IP) {
+ 
+ // AddPrefix adds all IPs in p to s.
+ func (s *IPSetBuilder) AddPrefix(p IPPrefix) {
+-	if r := p.Range(); r.Valid() {
++	if r := p.Range(); r.IsValid() {
+ 		s.AddRange(r)
+ 	} else {
+-		s.errs = append(s.errs, fmt.Errorf("AddPrefix of invalid prefix %q", p))
++		s.addError("AddPrefix(%v/%v)", p.IP(), p.Bits())
+ 	}
+ }
+ 
+ // AddRange adds r to s.
+ // If r is not Valid, AddRange does nothing.
+ func (s *IPSetBuilder) AddRange(r IPRange) {
+-	if !r.Valid() {
+-		s.errs = append(s.errs, fmt.Errorf("AddRange of invalid range %q", r))
++	if !r.IsValid() {
++		s.addError("AddRange(%v-%v)", r.From(), r.To())
+ 		return
+ 	}
+ 	// If there are any removals (s.out), then we need to compact the set
+@@ -213,7 +226,7 @@ func (s *IPSetBuilder) AddSet(b *IPSet) {
+ // Remove removes ip from s.
+ func (s *IPSetBuilder) Remove(ip IP) {
+ 	if ip.IsZero() {
+-		s.errs = append(s.errs, errors.New("ignored Remove of zero IP"))
++		s.addError("Remove(IP{})")
+ 	} else {
+ 		s.RemoveRange(IPRangeFrom(ip, ip))
+ 	}
+@@ -221,19 +234,19 @@ func (s *IPSetBuilder) Remove(ip IP) {
+ 
+ // RemovePrefix removes all IPs in p from s.
+ func (s *IPSetBuilder) RemovePrefix(p IPPrefix) {
+-	if r := p.Range(); r.Valid() {
++	if r := p.Range(); r.IsValid() {
+ 		s.RemoveRange(r)
+ 	} else {
+-		s.errs = append(s.errs, fmt.Errorf("RemovePrefix of invalid prefix %q", p))
++		s.addError("RemovePrefix(%v/%v)", p.IP(), p.Bits())
+ 	}
+ }
+ 
+ // RemoveRange removes all IPs in r from s.
+ func (s *IPSetBuilder) RemoveRange(r IPRange) {
+-	if r.Valid() {
++	if r.IsValid() {
+ 		s.out = append(s.out, r)
+ 	} else {
+-		s.errs = append(s.errs, fmt.Errorf("RemoveRange of invalid range %q", r))
++		s.addError("RemoveRange(%v-%v)", r.From(), r.To())
+ 	}
+ }
+ 
+@@ -454,5 +467,31 @@ func (e multiErr) Error() string {
+ 	for _, err := range e {
+ 		ret = append(ret, err.Error())
+ 	}
+-	return strings.Join(ret, ", ")
++	return strings.Join(ret, "; ")
++}
++
++// A stacktraceErr combines an error with a stack trace.
++type stacktraceErr struct {
++	pcs [16]uintptr // preallocated array of PCs
++	at  []uintptr   // stack trace whence the error
++	err error       // underlying error
++}
++
++func (e *stacktraceErr) Error() string {
++	frames := runtime.CallersFrames(e.at)
++	buf := new(strings.Builder)
++	buf.WriteString(e.err.Error())
++	buf.WriteString(" @ ")
++	for {
++		frame, more := frames.Next()
++		if !more {
++			break
++		}
++		fmt.Fprintf(buf, "%s:%d ", frame.File, frame.Line)
++	}
++	return strings.TrimSpace(buf.String())
++}
++
++func (e *stacktraceErr) Unwrap() error {
++	return e.err
+ }
+diff --git a/vendor/inet.af/netaddr/netaddr.go b/vendor/inet.af/netaddr/netaddr.go
+index 6b747df9ae..9768406332 100644
+--- a/vendor/inet.af/netaddr/netaddr.go
++++ b/vendor/inet.af/netaddr/netaddr.go
+@@ -821,7 +821,7 @@ func (ip IP) Prior() IP {
+ func (ip IP) String() string {
+ 	switch ip.z {
+ 	case z0:
+-		return "invalid IP"
++		return "zero IP"
+ 	case z4:
+ 		return ip.string4()
+ 	default:
+@@ -1004,7 +1004,7 @@ func (ip IP) MarshalText() ([]byte, error) {
+ // It returns an error if *ip is not the IP zero value.
+ func (ip *IP) UnmarshalText(text []byte) error {
+ 	if ip.z != z0 {
+-		return errors.New("netaddr: refusing to Unmarshal into non-zero IP")
++		return errors.New("refusing to Unmarshal into non-zero IP")
+ 	}
+ 	if len(text) == 0 {
+ 		return nil
+@@ -1035,7 +1035,7 @@ func (ip IP) MarshalBinary() ([]byte, error) {
+ // UnmarshalBinary implements the encoding.BinaryUnmarshaler interface.
+ func (ip *IP) UnmarshalBinary(b []byte) error {
+ 	if ip.z != z0 {
+-		return errors.New("netaddr: refusing to Unmarshal into non-zero IP")
++		return errors.New("refusing to Unmarshal into non-zero IP")
+ 	}
+ 	n := len(b)
+ 	switch {
+@@ -1051,7 +1051,7 @@ func (ip *IP) UnmarshalBinary(b []byte) error {
+ 		*ip = ipv6Slice(b[:16]).WithZone(string(b[16:]))
+ 		return nil
+ 	}
+-	return fmt.Errorf("netaddr: unexpected ip size: %v", len(b))
++	return fmt.Errorf("unexpected ip size: %v", len(b))
+ }
+ 
+ // IPPort is an IP and a port number.
+@@ -1209,7 +1209,7 @@ func (p IPPort) MarshalText() ([]byte, error) {
+ // value.
+ func (p *IPPort) UnmarshalText(text []byte) error {
+ 	if p.ip.z != z0 || p.port != 0 {
+-		return errors.New("netaddr: refusing to UnmarshalText into non-zero IP")
++		return errors.New("refusing to Unmarshal into non-zero IPPort")
+ 	}
+ 	if len(text) == 0 {
+ 		return nil
+@@ -1282,7 +1282,7 @@ type IPPrefix struct {
+ 	bits uint8
+ }
+ 
+-// IPPrefixFrom returns an IPPrefix with IP ip and port port.
++// IPPrefixFrom returns an IPPrefix with IP ip and provided bits prefix length.
+ // It does not allocate.
+ func IPPrefixFrom(ip IP, bits uint8) IPPrefix {
+ 	return IPPrefix{
+@@ -1401,7 +1401,7 @@ func (p IPPrefix) Range() IPRange {
+ // The returned value is always non-nil.
+ // Any zone identifier is dropped in the conversion.
+ func (p IPPrefix) IPNet() *net.IPNet {
+-	if !p.Valid() {
++	if !p.IsValid() {
+ 		return &net.IPNet{}
+ 	}
+ 	stdIP, _ := p.ip.ipZone(nil)
+@@ -1419,7 +1419,7 @@ func (p IPPrefix) IPNet() *net.IPNet {
+ // If ip has an IPv6 zone, Contains returns false,
+ // because IPPrefixes strip zones.
+ func (p IPPrefix) Contains(ip IP) bool {
+-	if !p.Valid() || ip.hasZone() {
++	if !p.IsValid() || ip.hasZone() {
+ 		return false
+ 	}
+ 	if f1, f2 := p.ip.BitLen(), ip.BitLen(); f1 == 0 || f2 == 0 || f1 != f2 {
+@@ -1451,7 +1451,7 @@ func (p IPPrefix) Contains(ip IP) bool {
+ //
+ // If either has a Bits of zero, it returns true.
+ func (p IPPrefix) Overlaps(o IPPrefix) bool {
+-	if !p.Valid() || !o.Valid() {
++	if !p.IsValid() || !o.IsValid() {
+ 		return false
+ 	}
+ 	if p == o {
+@@ -1490,7 +1490,7 @@ func (p IPPrefix) AppendTo(b []byte) []byte {
+ 	if p.IsZero() {
+ 		return b
+ 	}
+-	if !p.Valid() {
++	if !p.IsValid() {
+ 		return append(b, "invalid IPPrefix"...)
+ 	}
+ 
+@@ -1528,13 +1528,11 @@ func (p IPPrefix) MarshalText() ([]byte, error) {
+ // It returns an error if *p is not the IPPrefix zero value.
+ func (p *IPPrefix) UnmarshalText(text []byte) error {
+ 	if *p != (IPPrefix{}) {
+-		return errors.New("netaddr: refusing to Unmarshal into non-zero IPPrefix")
++		return errors.New("refusing to Unmarshal into non-zero IPPrefix")
+ 	}
+-
+ 	if len(text) == 0 {
+ 		return nil
+ 	}
+-
+ 	var err error
+ 	*p, err = ParseIPPrefix(string(text))
+ 	return err
+@@ -1542,7 +1540,10 @@ func (p *IPPrefix) UnmarshalText(text []byte) error {
+ 
+ // String returns the CIDR notation of p: "<ip>/<bits>".
+ func (p IPPrefix) String() string {
+-	if !p.Valid() {
++	if p.IsZero() {
++		return "zero IPPrefix"
++	}
++	if !p.IsValid() {
+ 		return "invalid IPPrefix"
+ 	}
+ 	return fmt.Sprintf("%s/%d", p.ip, p.bits)
+@@ -1550,7 +1551,7 @@ func (p IPPrefix) String() string {
+ 
+ // lastIP returns the last IP in the prefix.
+ func (p IPPrefix) lastIP() IP {
+-	if !p.Valid() {
++	if !p.IsValid() {
+ 		return IP{}
+ 	}
+ 	a16 := p.ip.As16()
+@@ -1625,19 +1626,29 @@ func ParseIPRange(s string) (IPRange, error) {
+ 		return r, fmt.Errorf("invalid To IP %q in range %q", to, s)
+ 	}
+ 	r.to = r.to.withoutZone()
+-	if !r.Valid() {
++	if !r.IsValid() {
+ 		return r, fmt.Errorf("range %v to %v not valid", r.from, r.to)
+ 	}
+ 	return r, nil
+ }
+ 
++// MustParseIPRange calls ParseIPRange(s) and panics on error.
++// It is intended for use in tests with hard-coded strings.
++func MustParseIPRange(s string) IPRange {
++	r, err := ParseIPRange(s)
++	if err != nil {
++		panic(err)
++	}
++	return r
++}
++
+ // String returns a string representation of the range.
+ //
+ // For a valid range, the form is "From-To" with a single hyphen
+ // separating the IPs, the same format recognized by
+ // ParseIPRange.
+ func (r IPRange) String() string {
+-	if r.Valid() {
++	if r.IsValid() {
+ 		return fmt.Sprintf("%s-%s", r.from, r.to)
+ 	}
+ 	if r.from.IsZero() || r.to.IsZero() {
+@@ -1646,6 +1657,56 @@ func (r IPRange) String() string {
+ 	return "invalid IPRange"
+ }
+ 
++// AppendTo appends a text encoding of r,
++// as generated by MarshalText,
++// to b and returns the extended buffer.
++func (r IPRange) AppendTo(b []byte) []byte {
++	if r.IsZero() {
++		return b
++	}
++	b = r.from.AppendTo(b)
++	b = append(b, '-')
++	b = r.to.AppendTo(b)
++	return b
++}
++
++// MarshalText implements the encoding.TextMarshaler interface,
++// The encoding is the same as returned by String, with one exception:
++// If ip is the zero value, the encoding is the empty string.
++func (r IPRange) MarshalText() ([]byte, error) {
++	if r.IsZero() {
++		return []byte(""), nil
++	}
++	var max int
++	if r.from.z == z4 {
++		max = len("255.255.255.255-255.255.255.255")
++	} else {
++		max = len("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff")
++	}
++	b := make([]byte, 0, max)
++	return r.AppendTo(b), nil
++}
++
++// UnmarshalText implements the encoding.TextUnmarshaler interface.
++// The IP range is expected in a form accepted by ParseIPRange.
++// It returns an error if *r is not the IPRange zero value.
++func (r *IPRange) UnmarshalText(text []byte) error {
++	if *r != (IPRange{}) {
++		return errors.New("refusing to Unmarshal into non-zero IPRange")
++	}
++	if len(text) == 0 {
++		return nil
++	}
++	var err error
++	*r, err = ParseIPRange(string(text))
++	return err
++}
++
++// IsZero reports whether r is the zero value of the IPRange type.
++func (r IPRange) IsZero() bool {
++	return r == IPRange{}
++}
++
+ // IsValid reports whether r.From() and r.To() are both non-zero and
+ // obey the documented requirements: address families match, and From
+ // is less than or equal to To.
+@@ -1669,7 +1730,7 @@ func (r IPRange) Valid() bool { return r.IsValid() }
+ // If ip has an IPv6 zone, Contains returns false,
+ // because IPPrefixes strip zones.
+ func (r IPRange) Contains(addr IP) bool {
+-	return r.Valid() && !addr.hasZone() && r.contains(addr)
++	return r.IsValid() && !addr.hasZone() && r.contains(addr)
+ }
+ 
+ // contains is like Contains, but without the validity check.
+@@ -1736,7 +1797,7 @@ func mergeIPRanges(rr []IPRange) (out []IPRange, valid bool) {
+ 	for _, r := range rr[1:] {
+ 		prev := &out[len(out)-1]
+ 		switch {
+-		case !r.Valid():
++		case !r.IsValid():
+ 			// Invalid ranges make no sense to merge, refuse to
+ 			// perform.
+ 			return nil, false
+@@ -1778,8 +1839,8 @@ func mergeIPRanges(rr []IPRange) (out []IPRange, valid bool) {
+ // If p and o are of different address families or either are invalid,
+ // it reports false.
+ func (r IPRange) Overlaps(o IPRange) bool {
+-	return r.Valid() &&
+-		o.Valid() &&
++	return r.IsValid() &&
++		o.IsValid() &&
+ 		r.from.Compare(o.to) <= 0 &&
+ 		o.from.Compare(r.to) <= 0
+ }
+@@ -1802,7 +1863,7 @@ func (r IPRange) Prefixes() []IPPrefix {
+ // AppendPrefixes is an append version of IPRange.Prefixes. It appends
+ // the IPPrefix entries that cover r to dst.
+ func (r IPRange) AppendPrefixes(dst []IPPrefix) []IPPrefix {
+-	if !r.Valid() {
++	if !r.IsValid() {
+ 		return nil
+ 	}
+ 	return appendRangePrefixes(dst, r.prefixFrom128AndBits, r.from.addr, r.to.addr)
+@@ -1835,7 +1896,7 @@ func comparePrefixes(a, b uint128) (common uint8, aZeroBSet bool) {
+ // Prefix returns r as an IPPrefix, if it can be presented exactly as such.
+ // If r is not valid or is not exactly equal to one prefix, ok is false.
+ func (r IPRange) Prefix() (p IPPrefix, ok bool) {
+-	if !r.Valid() {
++	if !r.IsValid() {
+ 		return
+ 	}
+ 	if common, ok := comparePrefixes(r.from.addr, r.to.addr); ok {
+diff --git a/vendor/modules.txt b/vendor/modules.txt
+index 5bb151bfe5..83fa0a21db 100644
+--- a/vendor/modules.txt
++++ b/vendor/modules.txt
+@@ -1156,10 +1156,10 @@ go.uber.org/zap/internal/color
+ go.uber.org/zap/internal/exit
+ go.uber.org/zap/zapcore
+ go.uber.org/zap/zapgrpc
+-# go4.org/intern v0.0.0-20210108033219-3eb7198706b2
++# go4.org/intern v0.0.0-20211027215823-ae77deb06f29
+ ## explicit; go 1.13
+ go4.org/intern
+-# go4.org/unsafe/assume-no-moving-gc v0.0.0-20201222180813-1025295fd063
++# go4.org/unsafe/assume-no-moving-gc v0.0.0-20211027215541-db492cf91b37
+ ## explicit; go 1.11
+ go4.org/unsafe/assume-no-moving-gc
+ # golang.org/x/crypto v0.0.0-20211215153901-e495a2d5b3d3
+@@ -1423,7 +1423,7 @@ gopkg.in/yaml.v2
+ # gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+ ## explicit
+ gopkg.in/yaml.v3
+-# inet.af/netaddr v0.0.0-20210707202901-70468d781e6c
++# inet.af/netaddr v0.0.0-20211027220019-c74959edd3b6
+ ## explicit; go 1.12
+ inet.af/netaddr
+ # k8s.io/api v0.22.7 => k8s.io/api v0.21.0
