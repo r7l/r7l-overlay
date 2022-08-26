@@ -24,24 +24,24 @@ G="${WORKDIR}/${P}"
 S="${G}/src/${EGO_PN}"
 
 pkg_pretend() {
-        (has network-sandbox ${FEATURES}) && die "You need to disable 'network-sandbox' for this Ebuild in FEATURES"
+	(has network-sandbox ${FEATURES}) && die "You need to disable 'network-sandbox' for this Ebuild in FEATURES"
 }
 
 src_compile() {
 
-        cd "${S}"
+	cd "${S}"
 
-        export GOPATH="${G}"
+	export GOPATH="${G}"
 
-        local MY_GO_ARGS=(
-                -v -work -x
+	local MY_GO_ARGS=(
+		-ldflags "-s -w -X=main.version=${PV}"
         )
 
-        go generate || die
-        CGO_ENABLED=0 GOGC=off go build "${MY_GO_ARGS[@]}" ./cmd/trivy
+	go generate || die
+	go build "${MY_GO_ARGS[@]}" ./cmd/trivy
 
 }
 
 src_install() {
-        dobin trivy
+	dobin trivy
 }
