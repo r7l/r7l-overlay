@@ -17,12 +17,11 @@ IUSE="fluent-bit promtail +server tools systemd"
 
 RESTRICT="mirror strip"
 
+BDEPEND="<dev-lang/go-1.19"
 RDEPEND="acct-group/grafana
 	acct-user/${PN}
 	fluent-bit? ( app-admin/fluent-bit )"
 DEPEND="${RDEPEND}"
-
-PATCHES=("${FILESDIR}/${P}-fix-go19.patch")
 
 src_compile() {
 	BUILD_VERSION="${PV}"
