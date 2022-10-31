@@ -7,7 +7,7 @@ inherit webapp
 
 DESCRIPTION="Docker Registry User Interface."
 HOMEPAGE="https://github.com/Joxit/docker-registry-ui"
-SRC_URI="https://github.com/Joxit/docker-registry-ui/archive/refs/tags/${PV}.tar.gz"
+SRC_URI="https://github.com/Joxit/docker-registry-ui/archive/refs/tags/${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
 RESTRICT="primaryuri"
 
 LICENSE="GPL-2"
