@@ -7,25 +7,25 @@ inherit webapp
 
 DESCRIPTION="Matomo is the leading Free/Libre open analytics platform."
 HOMEPAGE="https://matomo.org"
-SRC_URI="https://builds.matomo.org/${P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://builds.matomo.org/${P}.tar.gz"
 
-LICENSE="GPL-3.0"
+LICENSE="GPL-3"
 KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="dev-php/composer"
 RDEPEND=">=dev-lang/php-7.4[gd,pdo]
-        virtual/mysql
-        virtual/httpd-php"
+	virtual/mysql
+	virtual/httpd-php"
 
 S="${WORKDIR}/${PN}"
 
 src_install() {
 
-        webapp_src_preinst
+	webapp_src_preinst
 
-        insinto "${MY_HTDOCSDIR}"
-        doins -r .
+	insinto "${MY_HTDOCSDIR}"
+	doins -r .
 
 	keepdir "${MY_HTDOCSDIR}/config"
 	keepdir "${MY_HTDOCSDIR}/tmp"
@@ -36,6 +36,6 @@ src_install() {
 	# make executable for cli
 	fperms 755 "${MY_HTDOCSDIR}/console"
 
-        webapp_src_install
+	webapp_src_install
 
 }
