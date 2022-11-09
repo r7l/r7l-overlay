@@ -7,7 +7,7 @@ inherit webapp
 
 DESCRIPTION="Simple way to manage your todo list in AJAX style."
 HOMEPAGE="https://www.mytinytodo.net"
-SRC_URI="https://github.com/maxpozdeev/mytinytodo/releases/download/v${PV}/${PN}-v${PV}.zip"
+SRC_URI="https://github.com/maxpozdeev/mytinytodo/releases/download/v${PV}/${PN}-v${PV}.tar.gz"
 RESTRICT="primaryuri"
 
 LICENSE="GPL-2"
