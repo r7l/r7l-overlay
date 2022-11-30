@@ -17,7 +17,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-DEPEND=""
+DEPEND=">=dev-lang/go-1.19"
 RDEPEND="${DEPEND}"
 
 G="${WORKDIR}/${P}"
@@ -35,7 +35,7 @@ src_compile() {
 
 	local MY_GO_ARGS=(
 		-ldflags "-s -w -X=main.version=${PV}"
-        )
+	)
 
 	go generate || die
 	go build "${MY_GO_ARGS[@]}" ./cmd/trivy
