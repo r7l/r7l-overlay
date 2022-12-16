@@ -16,7 +16,7 @@ REQUIRED_USE="|| ( mysql sqlite )"
 
 BDEPEND=">=net-libs/nodejs-16"
 DEPEND="dev-php/composer"
-RDEPEND=">=dev-lang/php-7.4[cli,json,fileinfo,pdo]
+RDEPEND=">=dev-lang/php-8.0[cli,fileinfo,pdo]
 	mysql? ( virtual/mysql )
 	sqlite? ( dev-db/sqlite )
 	virtual/httpd-php"
@@ -51,7 +51,7 @@ src_prepare() {
 		rm -R "${S}/.github"
 	fi
 
-	cd ${S}
+	cd "${S}"
 	composer install --no-dev
 
 	npm ci
