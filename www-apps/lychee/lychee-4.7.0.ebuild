@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -15,7 +15,7 @@ IUSE="+mysql sqlite"
 REQUIRED_USE="|| ( mysql sqlite )"
 
 DEPEND="dev-php/composer"
-RDEPEND=">=dev-lang/php-8[cli,bcmath,exif,gd,curl,intl,phar,fileinfo,pdo]
+RDEPEND=">=dev-lang/php-8.1[cli,bcmath,exif,gd,curl,intl,phar,fileinfo,pdo]
 	mysql? ( virtual/mysql )
 	sqlite? ( dev-db/sqlite )
 	virtual/httpd-php"
@@ -38,7 +38,7 @@ src_prepare() {
 		rm -R "${S}/.travis.yml"
 	fi
 
-	cd ${S}
+	cd "${S}"
 	composer install --no-dev
 
 }
