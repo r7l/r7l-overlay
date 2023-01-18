@@ -3,8 +3,6 @@
 
 EAPI=8
 
-MY_PV="1.12.22301"
-
 DESCRIPTION="WinFsp · Windows File System Proxy - FUSE for Windows"
 HOMEPAGE="https://github.com/winfsp/winfsp"
 SRC_URI="https://github.com/winfsp/winfsp/releases/download/v${PV}/${PN}-${PV}.msi"
