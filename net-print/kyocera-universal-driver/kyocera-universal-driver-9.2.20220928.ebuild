@@ -43,7 +43,7 @@ src_prepare() {
 	sed -i "s|/usr/lib/cups/filter|/usr/libexec/cups/filter|g" "${S}/ppd"/*.ppd
 
 	# Prepare cups-filters
-	mkdir cups-filters
+	mkdir "${S}/cups-filters"
 	mv "usr/lib/cups/filter"/* "${S}/cups-filters"
 	sed -i "s|PyPDF3|pypdf|g" "${S}/cups-filters/kyofilter_pre_H"
 
