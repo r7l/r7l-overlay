@@ -1,22 +1,24 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit webapp
 
 DESCRIPTION="LinkAce is a bookmark archive."
-HOMEPAGE="https://github.com/Kovah/LinkAce"
-SRC_URI="https://github.com/Kovah/LinkAce/archive/v${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+HOMEPAGE="https://github.com/kovah/linkace"
+SRC_URI="https://github.com/kovah/linkace/archive/v${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64"
 IUSE="+mysql sqlite"
 REQUIRED_USE="|| ( mysql sqlite )"
 
-BDEPEND=">=net-libs/nodejs-16"
 DEPEND="dev-php/composer"
-RDEPEND=">=dev-lang/php-8.0[cli,fileinfo,pdo]
+BDEPEND="${DEPEND}
+	>=net-libs/nodejs-16"
+RDEPEND="${DEPEND}
+	>=dev-lang/php-8.0[cli,fileinfo,ftp,pdo]
 	mysql? ( virtual/mysql )
 	sqlite? ( dev-db/sqlite )
 	virtual/httpd-php"
@@ -24,7 +26,7 @@ RDEPEND=">=dev-lang/php-8.0[cli,fileinfo,pdo]
 S="${WORKDIR}/LinkAce-${PV}"
 
 pkg_pretend() {
-	(has network-sandbox ${FEATURES}) && die "You need to disable 'network-sandbox' for this Ebuild in FEATURES or package.env"
+	(has network-sandbox ${FEATURES}) && die "You need to disable 'network-sandbox' in FEATURES or package.env"
 }
 
 src_prepare() {
