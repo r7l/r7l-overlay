@@ -7,7 +7,7 @@ inherit webapp
 
 DESCRIPTION="A great looking and easy-to-use photo-management-system."
 HOMEPAGE="https://lycheeorg.github.io"
-SRC_URI="https://github.com/LycheeOrg/Lychee/archive/v${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+SRC_URI="https://github.com/lycheeorg/lychee/archive/v${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64"
@@ -15,12 +15,17 @@ IUSE="+mysql sqlite"
 REQUIRED_USE="|| ( mysql sqlite )"
 
 DEPEND="dev-php/composer"
-RDEPEND=">=dev-lang/php-8.1[cli,bcmath,exif,gd,curl,intl,phar,fileinfo,pdo]
+RDEPEND="${DEPEND}
+	>=dev-lang/php-8.1[cli,bcmath,exif,gd,curl,intl,phar,fileinfo,pdo]
 	mysql? ( virtual/mysql )
 	sqlite? ( dev-db/sqlite )
 	virtual/httpd-php"
 
 S="${WORKDIR}/Lychee-${PV}"
+
+pkg_pretend() {
+	(has network-sandbox ${FEATURES}) && die "You need to disable 'network-sandbox' in FEATURES or package.env"
+}
 
 src_prepare() {
 

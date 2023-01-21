@@ -6,6 +6,6 @@
     <flag name="sqlite">Install support and dependencies for Sqlite</flag>
   </use>
   <upstream>
-    <remote-id type="github">LycheeOrg/Lychee</remote-id>
+    <remote-id type="github">lycheeorg/lychee</remote-id>
   </upstream>
 </pkgmetadata>
