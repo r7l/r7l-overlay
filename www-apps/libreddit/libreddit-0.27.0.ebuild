@@ -196,8 +196,8 @@ CRATES="
 inherit cargo
 
 DESCRIPTION="Alternative private front-end to Reddit"
-HOMEPAGE="https://github.com/spikecodes/libreddit"
-SRC_URI="https://github.com/spikecodes/libreddit/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+HOMEPAGE="https://github.com/libreddit/libreddit"
+SRC_URI="https://github.com/libreddit/libreddit/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris)"
 
 LICENSE="AGPL-3 Apache-2.0 BSD Boost-1.0 ISC MIT Unlicense ZLIB"
