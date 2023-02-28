@@ -13,13 +13,12 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="fluent-bit promtail +server tools systemd"
+IUSE="promtail +server tools systemd"
 
 RESTRICT="mirror strip"
 
 RDEPEND="acct-group/grafana
-	acct-user/${PN}
-	fluent-bit? ( app-admin/fluent-bit )"
+	acct-user/${PN}"
 DEPEND="${RDEPEND}"
 
 src_compile() {
@@ -50,10 +49,6 @@ src_compile() {
 			CGO_ENABLED=0 go build -ldflags "${EGO_LDFLAGS}" -tags netgo -mod vendor -o cmd/promtail/promtail ./clients/cmd/promtail || die
 		fi
 	fi
-	if use fluent-bit; then
-		einfo "Building cmd/fluent-bit/out_${PN}..."
-		go build -ldflags "${EGO_LDFLAGS}" -tags netgo -mod vendor -buildmode=c-shared -o cmd/fluent-bit/out_grafana_${PN}.so ./clients/cmd/fluent-bit || die
-	fi
 }
 
 src_install() {
@@ -62,7 +57,7 @@ src_install() {
 
 		newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 		newinitd "${FILESDIR}/${PN}.initd" "${PN}"
-        use systemd && systemd_newunit "${FILESDIR}"/${PN}.service ${PN}.service
+		use systemd && systemd_newunit "${FILESDIR}"/${PN}.service ${PN}.service
 
 		insinto "/etc/${PN}"
 		doins "${S}/cmd/${PN}/${PN}-local-config.yaml"
@@ -88,9 +83,5 @@ src_install() {
 		keepdir "/var/lib/${PN}"
 		fowners ${PN}:grafana "/etc/${PN}"
 		fowners ${PN}:grafana "/var/lib/${PN}"
-	fi
-	if use fluent-bit; then
-		insinto "/usr/$(get_libdir)/${PN}"
-		dolib.so "${S}/cmd/fluent-bit/out_grafana_${PN}.so"
 	fi
 }
