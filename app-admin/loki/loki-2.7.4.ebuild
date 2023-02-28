@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit go-module systemd
 
 DESCRIPTION="Like Prometheus, but for logs."
-HOMEPAGE="https://grafana.com/loki/"
+HOMEPAGE="https://grafana.com/loki"
 SRC_URI="https://github.com/grafana/loki/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -17,7 +17,6 @@ IUSE="fluent-bit promtail +server tools systemd"
 
 RESTRICT="mirror strip"
 
-BDEPEND="<dev-lang/go-1.19"
 RDEPEND="acct-group/grafana
 	acct-user/${PN}
 	fluent-bit? ( app-admin/fluent-bit )"
