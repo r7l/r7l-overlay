@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="The Universal Driver package and toolset for printing on Kyocera-based printers."
-HOMEPAGE="https://kyoceradocumentsolutions.com"
+HOMEPAGE="https://www.kyoceradocumentsolutions.com"
 SRC_URI="https://www.kyoceradocumentsolutions.co.uk/content/download-center/gb/drivers/all/Linux_Universal_Driver_zip.download.zip -> ${P}.zip"
 
 LICENSE="GPL-2 kyocera-mita-ppds"
