@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PV=${PV/_beta/-beta}
 S=${WORKDIR}/${PN}-${MY_PV}
@@ -22,10 +22,14 @@ RDEPEND="acct-group/grafana
 	acct-user/grafana
 	!www-apps/grafana-bin"
 DEPEND="${RDEPEND}
-	=net-libs/nodejs-16*[icu]
+	=net-libs/nodejs-18*[icu]
 	sys-apps/yarn"
 
 QA_PRESTRIPPED="usr/bin/grafana-*"
+
+pkg_pretend() {
+	(has network-sandbox ${FEATURES}) && die "You need to disable 'network-sandbox' for this Ebuild in FEATURES"
+}
 
 src_compile() {
 	NODE_OPTIONS="--max-old-space-size=5120" LDFLAGS="" make all || die
