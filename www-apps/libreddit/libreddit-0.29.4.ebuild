@@ -214,6 +214,8 @@ DEPEND=""
 RDEPEND="acct-user/libreddit
 	acct-group/libreddit"
 
+PATCHES=( "${FILESDIR}/default-subscriptions-0.29.4.patch" )
+
 src_install(){
 	cargo_src_install
 	newinitd "${FILESDIR}"/libreddit.initd libreddit

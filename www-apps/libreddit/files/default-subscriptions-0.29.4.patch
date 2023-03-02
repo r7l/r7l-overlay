@@ -1,0 +1,76 @@
+diff --git a/app.json b/app.json
+index da5c1f9..3bdbf71 100644
+--- a/app.json
++++ b/app.json
+@@ -52,6 +52,9 @@
+     },
+     "LIBREDDIT_DEFAULT_DISABLE_VISIT_REDDIT_CONFIRMATION": {
+       "required": false
++    },
++    "LIBREDDIT_DEFAULT_SUBSCRIPTIONS": {
++      "required": false
+     }
+   }
+ }
+diff --git a/src/config.rs b/src/config.rs
+index 90478b9..e49ec6f 100644
+--- a/src/config.rs
++++ b/src/config.rs
+@@ -52,6 +52,9 @@ pub struct Config {
+ 	#[serde(rename = "LIBREDDIT_DEFAULT_HIDE_AWARDS")]
+ 	pub(crate) default_hide_awards: Option<String>,
+
++	#[serde(rename = "LIBREDDIT_DEFAULT_SUBSCRIPTIONS")]
++	pub(crate) default_subscriptions: Option<String>,
++
+ 	#[serde(rename = "LIBREDDIT_BANNER")]
+ 	pub(crate) banner: Option<String>,
+ }
+@@ -81,6 +84,7 @@ impl Config {
+ 			default_use_hls: parse("LIBREDDIT_DEFAULT_USE_HLS"),
+ 			default_hide_hls_notification: parse("LIBREDDIT_DEFAULT_HIDE_HLS"),
+ 			default_hide_awards: parse("LIBREDDIT_DEFAULT_HIDE_AWARDS"),
++			default_subscriptions: parse("LIBREDDIT_DEFAULT_SUBSCRIPTIONS"),
+ 			banner: parse("LIBREDDIT_BANNER"),
+ 		}
+ 	}
+@@ -100,6 +104,7 @@ fn get_setting_from_config(name: &str, config: &Config) -> Option<String> {
+ 		"LIBREDDIT_DEFAULT_HIDE_HLS_NOTIFICATION" => config.default_hide_hls_notification.clone(),
+ 		"LIBREDDIT_DEFAULT_WIDE" => config.default_wide.clone(),
+ 		"LIBREDDIT_DEFAULT_HIDE_AWARDS" => config.default_hide_awards.clone(),
++		"LIBREDDIT_DEFAULT_SUBSCRIPTIONS" => config.default_subscriptions.clone(),
+ 		"LIBREDDIT_BANNER" => config.banner.clone(),
+ 		_ => None,
+ 	}
+diff --git a/src/instance_info.rs b/src/instance_info.rs
+index 19b93f1..6a47aba 100644
+--- a/src/instance_info.rs
++++ b/src/instance_info.rs
+@@ -139,6 +139,7 @@ impl InstanceInfo {
+ 				["Blur NSFW", &convert(&self.config.default_blur_nsfw)],
+ 				["Use HLS", &convert(&self.config.default_use_hls)],
+ 				["Hide HLS notification", &convert(&self.config.default_hide_hls_notification)],
++				["Subscriptions", &convert(&self.config.default_subscriptions)],
+ 			])
+ 			.with_header_row(["Default preferences"]),
+ 		);
+@@ -166,7 +167,8 @@ impl InstanceInfo {
+                     Default show NSFW: {:?}\n
+                     Default blur NSFW: {:?}\n
+                     Default use HLS: {:?}\n
+-                    Default hide HLS notification: {:?}\n",
++                    Default hide HLS notification: {:?}\n
++                    Default subscriptions: {:?}\n",
+ 					self.crate_version,
+ 					self.git_commit,
+ 					self.deploy_date,
+@@ -184,7 +186,8 @@ impl InstanceInfo {
+ 					self.config.default_show_nsfw,
+ 					self.config.default_blur_nsfw,
+ 					self.config.default_use_hls,
+-					self.config.default_hide_hls_notification
++					self.config.default_hide_hls_notification,
++					self.config.default_subscriptions
+ 				)
+ 			}
+ 			StringType::Html => self.to_table(),
