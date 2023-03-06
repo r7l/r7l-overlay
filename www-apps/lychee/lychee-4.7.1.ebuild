@@ -43,9 +43,6 @@ src_prepare() {
 		rm -R "${S}/.travis.yml"
 	fi
 
-	cd "${S}"
-	composer install --no-dev
-
 }
 
 src_install() {
@@ -64,7 +61,11 @@ src_install() {
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/public/sym
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/public/uploads
 
+	webapp_configfile ${MY_HTDOCSDIR}/.env
+
 	keepdir "${MY_HTDOCSDIR}"/public/uploads
+
+	fperms +x "${MY_HTDOCSDIR}"/artisan
 
 	webapp_src_install
 
