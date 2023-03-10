@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ inherit golang-vcs-snapshot systemd
 
 DESCRIPTION="A modern HTTP reverse proxy and load balancer made to deploy microservices"
 HOMEPAGE="https://traefik.io"
-SRC_URI="https://${EGO_PN}/releases/download/v${MY_PV}/${PN}-v${MY_PV}.src.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/traefik/traefik/releases/download/v${MY_PV}/${PN}-v${MY_PV}.src.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="MIT"
