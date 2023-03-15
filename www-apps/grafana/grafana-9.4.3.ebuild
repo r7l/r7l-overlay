@@ -44,6 +44,7 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r public conf
 
+	dobin bin/linux-amd64/grafana
 	dobin bin/linux-amd64/grafana-cli
 	dobin bin/linux-amd64/grafana-server
 
