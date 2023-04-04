@@ -28,6 +28,7 @@ RDEPEND="dev-libs/libconfig:0=
 	dev-libs/nettle:=[gmp]
 	media-libs/freetype:2
 	media-libs/fontconfig:1.0
+	media-libs/libsamplerate
 	media-libs/libsdl2
 	media-libs/sdl2-ttf
 	media-video/pipewire
