@@ -11,7 +11,7 @@ SRC_URI="https://github.com/axllent/mailpit/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 BDEPEND=">=net-libs/nodejs-18"
 RDEPEND="acct-group/mailpit
