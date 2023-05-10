@@ -28,8 +28,10 @@ src_install() {
 	doins -r .
 
 	keepdir "${MY_HTDOCSDIR}/config"
+	keepdir "${MY_HTDOCSDIR}/js"
 	keepdir "${MY_HTDOCSDIR}/tmp"
 
+	webapp_serverowned "${MY_HTDOCSDIR}/js"
 	webapp_serverowned -R "${MY_HTDOCSDIR}/tmp"
 	webapp_serverowned -R "${MY_HTDOCSDIR}/matomo.js"
 
