@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<!DOCTYPE pkgmetadata
+  SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+  <upstream>
+    <remote-id type="github">ggerganov/llama.cpp</remote-id>
+  </upstream>
+  <use>
+    <flag name="blas">Install OpenBLAS support</flag>
+    <flag name="cublas">Install support for GPU BLAS acceleration using the Nvidia CUDA cores</flag>
+    <flag name="tools">Install tools for benchmarks or models converting</flag>
+  </use>
+</pkgmetadata>
