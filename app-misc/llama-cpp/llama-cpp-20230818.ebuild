@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake
 
 MY_PN="llama.cpp"
-MY_PV="master-bd34cdd"
+MY_PV="master-604b8bd"
 
 DESCRIPTION="Port of Facebook's LLaMA model in C/C++"
 HOMEPAGE="https://github.com/ggerganov/llama.cpp"
