@@ -28,6 +28,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DLLAMA_OPENBLASS="$(usex blas)"
 		-DLLAMA_CUBLAS="$(usex cublas)"
+                -DCMAKE_SKIP_BUILD_RPATH=ON
 	)
 	if use cublas ; then
 		addpredict /dev/nvidiactl
