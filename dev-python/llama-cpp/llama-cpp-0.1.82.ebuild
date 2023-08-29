@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
-	~app-misc/llama-cpp-20230724
+	~app-misc/llama-cpp-20230828
 	dev-python/diskcache
 	dev-python/numpy
 	dev-python/typing-extensions

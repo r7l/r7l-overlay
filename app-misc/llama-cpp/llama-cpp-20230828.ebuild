@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake
 
 MY_PN="llama.cpp"
-MY_PV="master-604b8bd"
+MY_PV="b1103"
 
 DESCRIPTION="Port of Facebook's LLaMA model in C/C++"
 HOMEPAGE="https://github.com/ggerganov/llama.cpp"
@@ -28,6 +28,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DLLAMA_OPENBLASS="$(usex blas)"
 		-DLLAMA_CUBLAS="$(usex cublas)"
+		-DCMAKE_SKIP_BUILD_RPATH=ON
 	)
 	if use cublas ; then
 		addpredict /dev/nvidiactl
