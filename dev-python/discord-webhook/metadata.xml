@@ -4,5 +4,6 @@
 <pkgmetadata>
   <upstream>
     <remote-id type="github">lovvskillz/python-discord-webhook</remote-id>
+    <remote-id type="pypi">discord-webhook</remote-id>
   </upstream>
 </pkgmetadata>
