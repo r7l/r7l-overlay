@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<!DOCTYPE pkgmetadata
+  SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+  <upstream>
+    <remote-id type="github">djmattyg007/dreg-client</remote-id>
+    <remote-id type="pypi">dreg-client</remote-id>
+  </upstream>
+</pkgmetadata>
