@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="dev-python/hatchling[${PYTHON_USEDEP}]"
 RDEPEND="
 	dev-python/pydantic[${PYTHON_USEDEP}]
 	dev-python/python-dotenv[${PYTHON_USEDEP}]
