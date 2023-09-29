@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake
 
 MY_PN="llama.cpp"
-MY_PV="b1103"
+MY_PV="b1245"
 
 DESCRIPTION="Port of Facebook's LLaMA model in C/C++"
 HOMEPAGE="https://github.com/ggerganov/llama.cpp"
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/ggerganov/llama.cpp/archive/refs/tags/${MY_PV}.tar.g
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="blas cublas tools"
+IUSE="blas cublas tests tools"
 
 DEPEND="blas? ( sci-libs/openblas:= )
 	cublas? ( dev-util/nvidia-cuda-toolkit )"
@@ -26,8 +26,9 @@ S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DLLAMA_OPENBLASS="$(usex blas)"
+		-DLLAMA_OPENBLAS="$(usex blas)"
 		-DLLAMA_CUBLAS="$(usex cublas)"
+		-DLLAMA_BUILD_TESTS="$(usex tests)"
 		-DCMAKE_SKIP_BUILD_RPATH=ON
 	)
 	if use cublas ; then

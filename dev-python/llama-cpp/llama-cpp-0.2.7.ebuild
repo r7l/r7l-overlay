@@ -16,13 +16,21 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE=""
+IUSE="examples server"
 
 DEPEND="
-	~app-misc/llama-cpp-20230913
+	~app-misc/llama-cpp-20230926
 	dev-python/diskcache
 	dev-python/numpy
 	dev-python/typing-extensions
+	server? (
+		dev-python/uvicorn
+		dev-python/fastapi
+		>=dev-python/pydantic-2.0
+		dev-python/pydantic-settings
+		dev-python/sse-starlette
+		dev-python/starlette-context
+	)
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
@@ -30,8 +38,12 @@ BDEPEND=""
 S="${WORKDIR}/llama-cpp-python-${PV}"
 
 src_prepare() {
+	if ! use examples ; then
+		rm -R examples
+	fi
+
 	# Remove the vendor as it has its own Ebuild
-	rm -R "${S}/vendor"
+	rm -R vendor
 	sed -i -e '/option.*/d' CMakeLists.txt || die
 
 	# use Gentoo /usr/lib64
