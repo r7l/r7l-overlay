@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake
 
 MY_PN="llama.cpp"
-MY_PV="b1245"
+MY_PV="b1331"
 
 DESCRIPTION="Port of Facebook's LLaMA model in C/C++"
 HOMEPAGE="https://github.com/ggerganov/llama.cpp"
@@ -15,7 +15,8 @@ SRC_URI="https://github.com/ggerganov/llama.cpp/archive/refs/tags/${MY_PV}.tar.g
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="blas cublas tools"
+IUSE="blas cublas lto tests tools"
+CPU_FLAGS_X86=( avx avx2 f16c )
 
 DEPEND="blas? ( sci-libs/openblas:= )
 	cublas? ( dev-util/nvidia-cuda-toolkit )"
@@ -26,9 +27,13 @@ S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DLLAMA_OPENBLASS="$(usex blas)"
+		-DLLAMA_BLAS="$(usex blas)"
 		-DLLAMA_CUBLAS="$(usex cublas)"
+		-DLLAMA_LTO="$(usex lto)"
+		-DLLAMA_BUILD_TESTS="$(usex tests)"
+		-DLLAMA_BUILD_SERVER=OFF
 		-DCMAKE_SKIP_BUILD_RPATH=ON
+		-DBUILD_NUMBER="1"
 	)
 	if use cublas ; then
 		addpredict /dev/nvidiactl
