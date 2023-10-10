@@ -37,7 +37,7 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
-	media-libs/mesa
+	media-libs/mesa[wayland]
 	net-print/cups
 	sys-apps/dbus
 	x11-libs/cairo
