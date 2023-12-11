@@ -11,7 +11,7 @@ SRC_URI="https://github.com/maxmind/geoipupdate/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="ISC BSD BSD-2 MIT Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm ppc64 ~s390 x86"
+KEYWORDS="~amd64 ~arm64"
 
 DOCS=( README.md CHANGELOG.md doc/GeoIP.conf.md doc/geoipupdate.md )
 
