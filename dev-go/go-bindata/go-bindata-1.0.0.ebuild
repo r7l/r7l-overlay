@@ -15,7 +15,7 @@ SLOT="0/${PVR}"
 
 src_install() {
 	GOBIN=${S}/bin \
-		golang-build_src_install
+	golang-build_src_install
 	dobin bin/*
 }
 
