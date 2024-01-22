@@ -14,7 +14,6 @@ HOMEPAGE="https://github.com/tiangolo/fastapi"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
 
 BDEPEND=">=dev-python/hatchling-1.13.0[${PYTHON_USEDEP}]"
 RDEPEND="
