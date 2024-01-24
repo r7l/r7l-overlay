@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A ready-to-use zsh configuration with plugins."
 HOMEPAGE="https://ohmyz.sh"
 
-EGIT_COMMIT="bb6c14cdfd0b7d543d0d9c2e5f0c0a9409a82084"
+EGIT_COMMIT="e656377d36077b0ca757d995c9c35f0fea7c7fdd"
 SRC_URI="https://github.com/ohmyzsh/ohmyzsh/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 RESTRICT="primaryuri"
 
@@ -14,9 +14,7 @@ KEYWORDS="~amd64 ~arm64"
 
 LICENSE="ZSH"
 SLOT="0"
-IUSE=""
 
-DEPEND=""
 RDEPEND="app-shells/zsh"
 
 ZSH_DEST="/usr/share/zsh/site-contrib/${PN}"
