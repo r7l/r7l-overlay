@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 IUSE="examples server"
 
 DEPEND="
-	~app-misc/llama-cpp-20230929
+	~app-misc/llama-cpp-20240124
 	dev-python/diskcache
 	dev-python/numpy
 	dev-python/typing-extensions
@@ -33,7 +33,6 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
 
 S="${WORKDIR}/llama-cpp-python-${PV}"
 

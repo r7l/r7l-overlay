@@ -1,12 +1,14 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+ROCM_VERSION=5.5
+
+inherit cmake llvm rocm
 
 MY_PN="llama.cpp"
-MY_PV="b1331"
+MY_PV="b1960"
 
 DESCRIPTION="Port of Facebook's LLaMA model in C/C++"
 HOMEPAGE="https://github.com/ggerganov/llama.cpp"
@@ -15,22 +17,32 @@ SRC_URI="https://github.com/ggerganov/llama.cpp/archive/refs/tags/${MY_PV}.tar.g
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="blas cublas lto tests tools"
+IUSE="blas cublas lto tests tools rocm"
 CPU_FLAGS_X86=( avx avx2 f16c )
+LLVM_MAX_SLOT=16
 
 DEPEND="blas? ( sci-libs/openblas:= )
-	cublas? ( dev-util/nvidia-cuda-toolkit )"
+	cublas? ( dev-util/nvidia-cuda-toolkit )
+	rocm? ( sci-libs/rocBLAS )"
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 src_configure() {
+	if use rocm ; then
+		CC=/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang
+		CXX=/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang++
+		export DEVICE_LIB_PATH=/usr/lib/amdgcn/bitcode
+		export HIP_DEVICE_LIB_PATH=/usr/lib/amdgcn/bitcode
+	fi
 	local mycmakeargs=(
 		-DLLAMA_BLAS="$(usex blas)"
 		-DLLAMA_CUBLAS="$(usex cublas)"
 		-DLLAMA_LTO="$(usex lto)"
 		-DLLAMA_BUILD_TESTS="$(usex tests)"
+		-DLLAMA_HIPBLAS="$(usex rocm)"
+		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 		-DLLAMA_BUILD_SERVER=OFF
 		-DCMAKE_SKIP_BUILD_RPATH=ON
 		-DBUILD_NUMBER="1"
