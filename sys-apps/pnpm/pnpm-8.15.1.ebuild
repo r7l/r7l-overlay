@@ -17,9 +17,10 @@ SLOT="0"
 
 RESTRICT="strip"
 
+RDEPEND="net-libs/nodejs"
+
 S="${WORKDIR}"
-QA_FLAGS_IGNORED="/usr/bin/${PN}-bin"
 
 src_install() {
-	newbin "${DISTDIR}/${P}" ${PN/-bin/}
+	newbin "${DISTDIR}/${P}-${ARCH}" ${PN}
 }
