@@ -7,8 +7,8 @@ DESCRIPTION="Fast, disk space efficient package manager, alternative to npm and 
 HOMEPAGE="https://pnpm.io"
 
 SRC_URI="
-	amd64? ( https://github.com/pnpm/pnpm/releases/download/v${PV}/pnpm-linux-x64 -> ${P} )
-	arm64? ( https://github.com/pnpm/pnpm/releases/download/v${PV}/pnpm-linux-arm64 -> ${P} )
+	amd64? ( https://github.com/pnpm/pnpm/releases/download/v${PV}/pnpm-linux-x64 -> ${P}-amd64 )
+	arm64? ( https://github.com/pnpm/pnpm/releases/download/v${PV}/pnpm-linux-arm64 -> ${P}-arm64 )
 "
 KEYWORDS="~amd64 ~arm64"
 
