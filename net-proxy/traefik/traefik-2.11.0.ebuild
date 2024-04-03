@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,7 @@ inherit golang-vcs-snapshot systemd
 
 DESCRIPTION="A modern HTTP reverse proxy and load balancer made to deploy microservices"
 HOMEPAGE="https://traefik.io"
-SRC_URI="https://github.com/traefik/traefik/releases/download/v${MY_PV}/${PN}-v${MY_PV}.src.tar.gz -> ${P}.tar.gz
-	https://github.com/r7l/traefik-ui/archive/refs/tags/${PV}.tar.gz -> ${PN}-ui-${MY_PV}.tar.gz"
+SRC_URI="https://github.com/traefik/traefik/releases/download/v${MY_PV}/${PN}-v${MY_PV}.src.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="MIT"
@@ -24,6 +23,10 @@ DEPEND="acct-group/traefik
 	acct-user/traefik
 	=dev-go/go-bindata-1.0.0"
 RDEPEND="${DEPEND}"
+BDEPEND=">=dev-lang/go-1.22
+	>net-libs/nodejs-19
+	<net-libs/nodejs-21
+	sys-apps/yarn"
 
 N="${WORKDIR}/${P}/src/${EGO_PN}/webui"
 G="${WORKDIR}/${P}"
@@ -33,21 +36,16 @@ pkg_pretend() {
 	(has network-sandbox ${FEATURES}) && die "You need to disable 'network-sandbox' for this Ebuild in FEATURES"
 }
 
-src_unpack() {
-
-	mkdir -p "${S}"
-	cd "${S}"
-	unpack "${P}.tar.gz"
-
-	if [ ! -f "${N}/static" ]; then
-		mkdir -p "${N}/static"
-	fi
-
-	cd "${N}/static"
-	unpack "${PN}-ui-${MY_PV}.tar.gz"
-}
-
 src_compile() {
+
+	echo "Build Traefik WebUI"
+
+	cd "${N}"
+	mkdir -p "${N}/static"
+	yarn install
+	npm run build:nc
+
+	echo "Build Traefik Binary"
 
 	cd "${S}"
 
