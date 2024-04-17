@@ -22,7 +22,7 @@ RDEPEND="acct-group/grafana
 	acct-user/grafana
 	!www-apps/grafana-bin"
 DEPEND="${RDEPEND}
-	=net-libs/nodejs-18*[icu]
+	=net-libs/nodejs-20*[icu]
 	sys-apps/yarn"
 
 QA_PRESTRIPPED="usr/bin/grafana-*"
