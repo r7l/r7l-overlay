@@ -29,15 +29,13 @@ QA_PREBUILT="
 "
 
 RDEPEND="
-	app-accessibility/at-spi2-atk:2
 	app-accessibility/at-spi2-core:2
-	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
-	media-libs/mesa[wayland]
+	media-libs/mesa
 	net-print/cups
 	sys-apps/dbus
 	x11-libs/cairo
