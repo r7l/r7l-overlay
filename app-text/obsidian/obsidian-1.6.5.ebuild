@@ -9,6 +9,8 @@ DESCRIPTION="A second brain, for you, forever."
 HOMEPAGE="https://obsidian.md"
 SRC_URI="https://github.com/obsidianmd/obsidian-releases/releases/download/v${PV}/${PN}-${PV}-amd64.deb"
 
+S="${WORKDIR}"
+
 LICENSE="Obsidian-EULA"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -36,8 +38,6 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	x11-libs/libxkbcommon
 	x11-libs/pango
 "
-
-#S="${WORKDIR}"
 
 src_prepare() {
 	default
