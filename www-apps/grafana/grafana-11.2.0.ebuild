@@ -3,27 +3,27 @@
 
 EAPI=8
 
-MY_PV=${PV/_beta/-beta}
-S=${WORKDIR}/${PN}-${MY_PV}
+MY_PV="${PV/_beta/-beta}"
 
 DESCRIPTION="The open-source platform for monitoring and observability"
 HOMEPAGE="https://grafana.com"
 SRC_URI="https://github.com/grafana/grafana/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-RESTRICT="mirror"
 
 inherit go-module systemd
+
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="AGPL-3.0 Apache-2.0 BSD-2 BSD-3 BSD-4 BSL-1.0 ImageMagick ISC LGPL-3.0 MIT MPL-2.0 OpenSSL Zlib"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="systemd"
 
+BEPEND="=net-libs/nodejs-20*[icu]
+	sys-apps/yarn"
 RDEPEND="acct-group/grafana
 	acct-user/grafana
 	!www-apps/grafana-bin"
-DEPEND="${RDEPEND}
-	=net-libs/nodejs-20*[icu]
-	sys-apps/yarn"
+DEPEND="${RDEPEND}"
 
 QA_PRESTRIPPED="usr/bin/grafana-*"
 
