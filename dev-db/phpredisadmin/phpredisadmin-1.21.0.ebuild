@@ -9,9 +9,10 @@ DESCRIPTION="Simple web interface to manage Redis databases."
 HOMEPAGE="https://github.com/erikdubbelboer/phpRedisAdmin"
 SRC_URI="https://github.com/erikdubbelboer/phpRedisAdmin/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/phpRedisAdmin-${PV}"
+
 LICENSE="CC-BY-SA-3.0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	dev-db/redis
@@ -21,8 +22,6 @@ RDEPEND="
 "
 
 need_httpd_cgi
-
-S="${WORKDIR}"/phpRedisAdmin-${PV}
 
 src_install() {
 
