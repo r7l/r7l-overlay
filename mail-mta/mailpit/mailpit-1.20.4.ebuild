@@ -9,16 +9,16 @@ DESCRIPTION="An email and SMTP testing tool with API for developers."
 HOMEPAGE="https://github.com/axllent/mailpit"
 SRC_URI="https://github.com/axllent/mailpit/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/mailpit-${PV}"
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
-BDEPEND=">=net-libs/nodejs-18"
+BDEPEND="net-libs/nodejs"
 RDEPEND="acct-group/mailpit
 	acct-user/mailpit"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/mailpit-${PV}"
 
 pkg_pretend() {
 	(has network-sandbox ${FEATURES}) && die "You need to disable 'network-sandbox' for this Ebuild in FEATURES"
