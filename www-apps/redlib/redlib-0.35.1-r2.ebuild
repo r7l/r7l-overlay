@@ -260,8 +260,8 @@ MY_COMMIT="7dda8d9bbb6c2ff0f75a924fdb6020854036e9a0"
 
 DESCRIPTION="Alternative private front-end to Reddit"
 HOMEPAGE="https://github.com/redlib-org/redlib"
-SRC_URI="https://github.com/redlib-org/redlib/archive/${MY_COMMIT}.tar.gz -> ${PN}-${PV}.tar.gz
-        ${CARGO_CRATE_URIS}
+SRC_URI="https://github.com/redlib-org/redlib/archive/${MY_COMMIT}.tar.gz -> ${PN}-${MY_COMMIT}.tar.gz
+	${CARGO_CRATE_URIS}
 "
 
 S="${WORKDIR}/redlib-${MY_COMMIT}"
@@ -270,16 +270,16 @@ LICENSE="AGPL-3"
 # Dependent crate licenses
 LICENSE+="
 	BSD ISC MIT Unicode-DFS-2016 ZLIB
-        || ( Apache-2.0 Boost-1.0 )
+	|| ( Apache-2.0 Boost-1.0 )
 "
 SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="acct-user/redlib
-        acct-group/redlib"
+	acct-group/redlib"
 
 src_install(){
 	cargo_src_install
-        newinitd "${FILESDIR}"/redlib.initd redlib
-        doconfd "${FILESDIR}"/redlib
+	newinitd "${FILESDIR}"/redlib.initd redlib
+	doconfd "${FILESDIR}"/redlib
 }
