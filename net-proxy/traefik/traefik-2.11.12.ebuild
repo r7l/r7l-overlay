@@ -23,7 +23,7 @@ DEPEND="acct-group/traefik
 	acct-user/traefik
 	=dev-go/go-bindata-1.0.0"
 RDEPEND="${DEPEND}"
-BDEPEND=">=dev-lang/go-1.22
+BDEPEND=">=dev-lang/go-1.23
 	>net-libs/nodejs-19
 	<net-libs/nodejs-21
 	sys-apps/yarn"
