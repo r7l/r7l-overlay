@@ -5,4 +5,8 @@
   <upstream>
     <remote-id type="github">obsidianmd/obsidian-releases</remote-id>
   </upstream>
+  <use>
+    <flag name="appindicator">Add support for Appindicator</flag>
+    <flag name="wayland">Fix desktop file for Wayland</flag>
+  </use>
 </pkgmetadata>

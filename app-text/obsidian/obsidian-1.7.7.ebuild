@@ -14,8 +14,14 @@ S="${WORKDIR}"
 LICENSE="Obsidian-EULA"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="appindicator wayland"
+restrict="mirror"
 
-RDEPEND="app-accessibility/at-spi2-core:2
+RDEPEND="
+	wayland? (
+		dev-libs/wayland
+	)
+	app-accessibility/at-spi2-core:2
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
@@ -44,9 +50,15 @@ src_prepare() {
 
 	# fix desktop file
 	sed -i 's|/opt/Obsidian/obsidian|/opt/obsidian/obsidian|g' "${S}/usr/share/applications/obsidian.desktop"
+
+	if use wayland; then
+		sed -i "s|Exec=/opt/obsidian/obsidian %U|Exec=/opt/obsidian/obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland %U|" "${S}/usr/share/applications/obsidian.desktop"
+	fi
 }
 
 src_install() {
+
+	local INSTALL_DIR="/opt/obsidian"
 
 	# files
 	insinto /opt/obsidian
@@ -55,16 +67,20 @@ src_install() {
 	# desktop file from deb
 	domenu usr/share/applications/obsidian.desktop
 
+	if use appindicator; then
+		dosym ../../usr/lib64/libayatana-appindicator3.so "${INSTALL_DIR}/libappindicator3.so"
+	fi
+
 	# icons from deb
 	for size in 16 32 48 64 128 256 512; do
 		doicon --size "${size}" "usr/share/icons/hicolor/${size}x${size}/apps/${PN}.png"
 	done
 
 	# permissions
-	fperms 4755 /opt/obsidian/chrome-sandbox || die
-	fperms +x  /opt/obsidian/obsidian || die
+	fperms 4755 "${INSTALL_DIR}/chrome-sandbox" || die
+	fperms +x "${INSTALL_DIR}/obsidian" || die
 
 	# executable
-	dosym ../../opt/obsidian/obsidian /usr/bin/obsidian
+	dosym "${INSTALL_DIR}/obsidian" "/usr/bin/obsidian"
 
 }
