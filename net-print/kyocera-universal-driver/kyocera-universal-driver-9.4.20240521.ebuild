@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,10 +7,11 @@ DESCRIPTION="The Universal Driver package and toolset for printing on Kyocera-ba
 HOMEPAGE="https://www.kyoceradocumentsolutions.com"
 SRC_URI="https://www.kyoceradocumentsolutions.co.uk/content/download-center/gb/drivers/all/Linux_Universal_Driver_zip.download.zip -> ${P}.zip"
 
+S="${WORKDIR}"
+
 LICENSE="GPL-2 kyocera-mita-ppds"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 BDEPEND="app-arch/unzip"
 RDEPEND="
@@ -19,8 +20,6 @@ RDEPEND="
 	<dev-python/pypdf-4.0
 	dev-python/reportlab
 "
-
-S="${WORKDIR}"
 
 src_prepare() {
 
