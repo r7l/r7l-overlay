@@ -15,7 +15,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
-BDEPEND="net-libs/nodejs"
+BDEPEND=">=dev-lang/go-1.23
+	net-libs/nodejs"
 RDEPEND="acct-group/mailpit
 	acct-user/mailpit"
 DEPEND="${RDEPEND}"
