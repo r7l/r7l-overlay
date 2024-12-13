@@ -32,7 +32,10 @@ pkg_pretend() {
 }
 
 src_compile() {
-	NODE_OPTIONS="--max-old-space-size=5120" LDFLAGS="" make all || die
+	NX_SOCKET_DIR="/tmp/nx-socket" \
+	NODE_OPTIONS="--max-old-space-size=5120" \
+	LDFLAGS="" \
+	make all || die
 }
 
 src_install() {
@@ -45,9 +48,8 @@ src_install() {
 	doins -r public conf
 
 	dobin bin/linux-amd64/grafana
-	dobin bin/linux-amd64/grafana-cli
-	dobin bin/linux-amd64/grafana-server
 
+	newconfd "${FILESDIR}"/grafana.confd grafana
 	newinitd "${FILESDIR}"/grafana.initd grafana
 
 	if ! use systemd; then
@@ -63,10 +65,14 @@ src_install() {
 }
 
 postinst() {
-	elog "${PN} has built-in log rotation. Please see [log.file] section of"
-	elog "/etc/grafana/grafana.ini for related settings."
-	elog
-	elog "You may add your own custom configuration for app-admin/logrotate if you"
-	elog "wish to use external rotation of logs. In this case, you also need to make"
-	elog "sure the built-in rotation is turned off."
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		# This is a new installation
+
+		elog "${PN} has built-in log rotation. Please see [log.file] section of"
+		elog "/etc/grafana/grafana.ini for related settings."
+		elog
+		elog "You may add your own custom configuration for app-admin/logrotate if you"
+		elog "wish to use external rotation of logs. In this case, you also need to make"
+		elog "sure the built-in rotation is turned off."
+	fi
 }
