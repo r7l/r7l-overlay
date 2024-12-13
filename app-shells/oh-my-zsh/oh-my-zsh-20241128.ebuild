@@ -6,22 +6,21 @@ EAPI=8
 DESCRIPTION="A ready-to-use zsh configuration with plugins."
 HOMEPAGE="https://ohmyz.sh"
 
-EGIT_COMMIT="e656377d36077b0ca757d995c9c35f0fea7c7fdd"
+EGIT_COMMIT="69a6359f7cf8978d464573fb7b023ee3cd00181a"
 SRC_URI="https://github.com/ohmyzsh/ohmyzsh/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-RESTRICT="primaryuri"
 
-KEYWORDS="~amd64 ~arm64"
+S="${WORKDIR}/ohmyzsh-${EGIT_COMMIT}"
 
 LICENSE="ZSH"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64"
+RESTRICT="mirror"
 
 RDEPEND="app-shells/zsh"
 
 ZSH_DEST="/usr/share/zsh/site-contrib/${PN}"
 ZSH_EDEST="${EPREFIX}${ZSH_DEST}"
 ZSH_TEMPLATE="templates/zshrc.zsh-template"
-
-S="${WORKDIR}/ohmyzsh-${EGIT_COMMIT}"
 
 src_prepare() {
 	local i
