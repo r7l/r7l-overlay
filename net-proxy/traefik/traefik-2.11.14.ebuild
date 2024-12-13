@@ -24,8 +24,7 @@ DEPEND="acct-group/traefik
 	=dev-go/go-bindata-1.0.0"
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-lang/go-1.23
-	>net-libs/nodejs-19
-	<net-libs/nodejs-21
+	=net-libs/nodejs-22*
 	sys-apps/yarn"
 
 N="${WORKDIR}/${P}/src/${EGO_PN}/webui"
