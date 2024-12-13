@@ -10,16 +10,15 @@ SRC_URI="
 	amd64? ( https://github.com/pnpm/pnpm/releases/download/v${PV}/pnpm-linux-x64 -> ${P}-amd64 )
 	arm64? ( https://github.com/pnpm/pnpm/releases/download/v${PV}/pnpm-linux-arm64 -> ${P}-arm64 )
 "
-KEYWORDS="~amd64 ~arm64"
+
+S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="0"
-
+KEYWORDS="~amd64 ~arm64"
 RESTRICT="strip"
 
 RDEPEND="net-libs/nodejs"
-
-S="${WORKDIR}"
 
 src_install() {
 	newbin "${DISTDIR}/${P}-${ARCH}" ${PN}
