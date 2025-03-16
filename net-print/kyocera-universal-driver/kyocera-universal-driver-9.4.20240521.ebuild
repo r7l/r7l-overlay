@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="The Universal Driver package and toolset for printing on Kyocera-based printers."
 HOMEPAGE="https://www.kyoceradocumentsolutions.com"
-SRC_URI="https://www.kyoceradocumentsolutions.co.uk/content/download-center/gb/drivers/all/Linux_Universal_Driver_zip.download.zip -> ${P}.zip"
+SRC_URI="https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/KyoceraLinuxPackages_20240521_tar_gz.download.gz -> ${P}.tar.gz"
 
 S="${WORKDIR}"
 
@@ -30,7 +30,7 @@ src_prepare() {
 	local DEB_FILE="kyodialog_${DEB_PV}-0_amd64.deb"
 
 	# Extract the downloaded files
-	tar -xzf "KyoceraLinuxPackages-${MY_PV}.tar.gz" "Debian/Global/kyodialog_amd64/${DEB_FILE}" --strip-components=3
+	cp "Debian/Global/kyodialog_amd64/${DEB_FILE}" "${DEB_FILE}"
 	ar x "${DEB_FILE}"
 	rm "${DEB_FILE}"
 
