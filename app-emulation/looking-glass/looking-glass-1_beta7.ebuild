@@ -1,17 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ebuild also allows to download .iso file with given host software for Windows.
+# Ebuild also allows to download Windows host software as mountable .iso file.
 
 EAPI=8
 
 MY_PN="LookingGlass"
 MY_PV="${PV//1_beta/B}"
+MY_PV="${MY_PV//_/-}"
 
 inherit cmake git-r3 tmpfiles
 
-EGIT_COMMIT="3df7d30cd5b551b23e41781313cef389239e27bc"
-EGIT_REPO_URI="https://github.com/gnif/LookingGlass"
+#EGIT_COMMIT="3df7d30cd5b551b23e41781313cef389239e27bc"
+#EGIT_REPO_URI="https://github.com/gnif/LookingGlass"
 
 DESCRIPTION="A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough"
 HOMEPAGE="https://looking-glass.io"
@@ -27,8 +28,10 @@ RDEPEND="dev-libs/libconfig:0=
 	dev-libs/nettle:=[gmp]
 	media-libs/freetype:2
 	media-libs/fontconfig:1.0
+	media-libs/libsamplerate
 	media-libs/libsdl2
 	media-libs/sdl2-ttf
+	media-video/pipewire
 	virtual/glu
 	X? (
 		x11-libs/libX11
@@ -64,9 +67,8 @@ src_unpack() {
 	                # Extract the host exe file
 	                mkdir "${PN}-host"
 	                cd "${PN}-host"
-	                # we need to use unzip manually here as we need to provide a password
-	                unzip -P "${EGIT_COMMIT:0:8}" "${DISTDIR}/${FILE}"
-                fi
+	                unpack "${FILE}"
+		fi
 	done
 
 }
@@ -75,7 +77,7 @@ src_prepare() {
 	default
 
 	if use host ; then
-		# Host file comes as zip but we need it to be .iso in order to mount it in QEMU"
+		# Host file comes as zip but we need it to be .iso in order to mount it in QEMU
 		mkisofs -lJR -iso-level 4 -o "${PN}-host-${MY_PV}.iso" "${WORKDIR}/${PN}-host"
 		rm -R "${WORKDIR}/${PN}-host"
 	fi
