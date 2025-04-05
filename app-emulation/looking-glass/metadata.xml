@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!DOCTYPE pkgmetadata
+  SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+  <use>
+    <flag name="gnome">Build with Gnome support</flag>
+    <flag name="host">Create ISO file for Windows host application</flag>
+    <flag name="obs">Add support for streaming with obs</flag>
+    <flag name="opengl">Build with OpenGL support</flag>
+    <flag name="pipewire">Build with Pipewire support</flag>
+    <flag name="pulseaudio">Build with Pulseaudio support</flag>
+    <flag name="wayland">Build with Wayland support</flag>
+    <flag name="X">Build with X support</flag>
+  </use>
+</pkgmetadata>
