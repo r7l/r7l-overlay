@@ -7,6 +7,7 @@
   </upstream>
   <use>
     <flag name="appindicator">Add support for Appindicator</flag>
-    <flag name="wayland">Fix desktop file for Wayland</flag>
+    <flag name="wayland">Add desktop file for Wayland</flag>
+    <flag name="X">Add desktop file for X</flag>
   </use>
 </pkgmetadata>
