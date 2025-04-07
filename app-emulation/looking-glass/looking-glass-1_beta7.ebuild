@@ -137,13 +137,7 @@ src_install() {
 	newtmpfiles "${FILESDIR}"/looking-glass.tmpfile looking-glass.conf
 	newicon -s 128 "${S}"/resources/icon-128x128.png looking-glass-client.png
 
-	if use X && ! use wayland || ! use X && use wayland ; then
-		domenu "${FILESDIR}"/looking-glass.desktop
-	fi
-	if use X && use wayland ; then
-		domenu "${FILESDIR}/looking-glass-x.desktop"
-		newmenu "${FILESDIR}/looking-glass.desktop" looking-glass-wayland.desktop
-	fi
+	domenu "${FILESDIR}"/looking-glass.desktop
 
 	if use host ; then
 		insinto /usr/share/drivers/windows
