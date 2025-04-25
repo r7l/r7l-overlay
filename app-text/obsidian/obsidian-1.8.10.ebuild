@@ -14,7 +14,8 @@ S="${WORKDIR}"
 LICENSE="Obsidian-EULA"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="appindicator wayland"
+IUSE="appindicator wayland +X"
+REQUIRED_USE="|| ( wayland X )"
 restrict="mirror"
 
 RDEPEND="
@@ -48,16 +49,26 @@ RDEPEND="
 src_prepare() {
 	default
 
-	# fix desktop file
-	sed -i 's|/opt/Obsidian/obsidian|/opt/obsidian/obsidian|g' "${S}/usr/share/applications/obsidian.desktop"
+	# Fix desktop file
+	sed -i 's|/opt/Obsidian/obsidian|/opt/obsidian/obsidian|g' "usr/share/applications/obsidian.desktop"
 
-	if use wayland; then
-		sed -i "s|Exec=/opt/obsidian/obsidian %U|Exec=/opt/obsidian/obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland %U|" "${S}/usr/share/applications/obsidian.desktop"
+	local WAYLAND_DESKTOP_FILE="usr/share/applications/obsidian.desktop"
+
+	if use X && use wayland; then
+		WAYLAND_DESKTOP_FILE="usr/share/applications/obsidian-wayland.desktop"
+		cp usr/share/applications/obsidian.desktop \
+			"${WAYLAND_DESKTOP_FILE}" \
+			|| die "failed to create obsidian-wayland.desktop file"
 	fi
+
+	# Fix wayland
+	if use wayland; then
+		sed -i "s|Exec=/opt/obsidian/obsidian %U|Exec=/opt/obsidian/obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland %U|" "${WAYLAND_DESKTOP_FILE}"
+	fi
+
 }
 
 src_install() {
-
 	local INSTALL_DIR="/opt/obsidian"
 
 	# files
@@ -66,6 +77,10 @@ src_install() {
 
 	# desktop file from deb
 	domenu usr/share/applications/obsidian.desktop
+
+	if use X && use wayland; then
+		domenu usr/share/applications/obsidian-wayland.desktop
+	fi
 
 	if use appindicator; then
 		dosym ../../usr/lib64/libayatana-appindicator3.so "${INSTALL_DIR}/libappindicator3.so"
@@ -82,5 +97,4 @@ src_install() {
 
 	# executable
 	dosym "${INSTALL_DIR}/obsidian" "/usr/bin/obsidian"
-
 }
