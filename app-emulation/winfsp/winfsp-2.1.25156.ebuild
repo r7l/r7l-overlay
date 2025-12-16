@@ -1,19 +1,20 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+MY_PV="2.1"
 DESCRIPTION="WinFsp · Windows File System Proxy - FUSE for Windows"
 HOMEPAGE="https://github.com/winfsp/winfsp"
-SRC_URI="https://github.com/winfsp/winfsp/releases/download/v${PV}/${PN}-${PV}.msi"
+SRC_URI="https://github.com/winfsp/winfsp/releases/download/v${MY_PV}/${PN}-${PV}.msi"
+
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="app-cdr/cdrtools"
-
-S="${WORKDIR}"
 
 src_unpack() {
 	mkdir "${PN}"
