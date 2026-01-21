@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="systemd"
 
-BEPEND="=net-libs/nodejs-20*[icu]
+BEPEND="=net-libs/nodejs-22*[icu]
 	sys-apps/yarn"
 RDEPEND="acct-group/grafana
 	acct-user/grafana
@@ -33,7 +33,7 @@ pkg_pretend() {
 
 src_compile() {
 	NX_SOCKET_DIR="/tmp/nx-socket" \
-	NODE_OPTIONS="--max-old-space-size=5120" \
+	NODE_OPTIONS="--max-old-space-size=6144" \
 	LDFLAGS="" \
 	make all || die
 }
